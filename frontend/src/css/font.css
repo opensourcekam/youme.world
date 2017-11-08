@@ -1,0 +1,23 @@
+@font-face {
+	font-family:'Bloomfield';
+	src: url('../fonts/web/EOT/Bloomfield_W_Rg.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/web/WOFF/Bloomfield_W_Rg.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'BloomfieldBold';
+	src: url('../fonts/web/EOT/Bloomfield_W_Bd.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/web/WOFF/Bloomfield_W_Bd.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family:'BloomfieldBlack';
+	src: url('../fonts/web/EOT/Bloomfield_W_Blk.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/web/WOFF/Bloomfield_W_Blk.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

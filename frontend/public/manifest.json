@@ -1,0 +1,15 @@
+{
+  "short_name": "Weapon-X-Admin",
+  "name": "Admin panel for Jet customization",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#8200ff",
+  "background_color": "#ffffff"
+}
