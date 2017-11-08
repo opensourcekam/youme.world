@@ -1,24 +1,14 @@
 {
-  "name": "basic-jwt-auth",
+  "name": "backend",
   "version": "1.0.0",
-  "main": "./src/index.js",
-  "license": "MIT",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "dev": "nodemon ./src/index.js",
-    "test": "node ./src/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Kameron A. Robinson <kamdroidR@me.com> (http://robinsonkameron.co)",
+  "license": "ISC",
   "dependencies": {
-    "bcrypt-nodejs": "^0.0.3",
-    "body-parser": "^1.17.2",
-    "cors": "^2.8.4",
-    "eslint": "^4.9.0",
-    "express": "^4.16.2",
-    "jwt-simple": "^0.5.1",
-    "mongoose": "^4.12.3",
-    "morgan": "^1.8.2",
-    "passport": "^0.3.2",
-    "passport-jwt": "^2.2.1",
-    "passport-local": "^1.0.0"
+    "express": "^4.16.2"
   }
 }
