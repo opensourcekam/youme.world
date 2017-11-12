@@ -5,7 +5,7 @@
   "main": "server/start.js",
   "dependencies": {
     "express": "^4.16.2",
-    "feuxworks": "latest",
+
     "history": "^4.7.2",
     "morgan": "^1.9.0",
     "prop-types": "^15.6.0",
@@ -39,3 +39,4 @@
     "eslint-plugin-import": "^2.8.0"
   }
 }
+
