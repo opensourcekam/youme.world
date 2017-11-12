@@ -1,8 +1,11 @@
 {
   "name": "youme.plan-frontend",
   "version": "0.1.0",
-  "private": true,
-  "main": "server/start.js",
+	"main": "server/start.js",
+	"engine": {
+    "node": "*",
+    "npm": "*"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "feuxworks": "^0.3.0",
