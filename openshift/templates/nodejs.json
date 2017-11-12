@@ -248,7 +248,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "git@github.com:RobinsonKameron/youme.data.git"
+      "value": "git@github.com:RobinsonKameron/youme.world.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
