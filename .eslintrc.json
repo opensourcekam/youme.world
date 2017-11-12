@@ -1,8 +1,6 @@
 {
-	"extends": "airbnb",
-	"rules": {
-		"react/jsx-filename-extension": "off",
-		"no-tabs": "off",
-		"import/no-extraneous-dependencies": "off"
-	}
+    "extends": "airbnb-base",
+    "plugins": [
+        "import"
+    ]
 }
