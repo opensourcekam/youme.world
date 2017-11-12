@@ -27,9 +27,8 @@
     "styled-components": "^2.2.1"
   },
   "scripts": {
-    "start": "node start.js",
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build  && cp -r build ../ymwui/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
