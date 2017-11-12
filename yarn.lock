@@ -2786,7 +2786,7 @@ fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.5, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-feuxworks@latest:
+feuxworks@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/feuxworks/-/feuxworks-0.3.0.tgz#c74a02aac18e5c2af73659e59f0f72e1edf272f2"
   dependencies:
