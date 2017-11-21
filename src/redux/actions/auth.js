@@ -1,12 +1,12 @@
-/* global fetch */
+/* global fetch Headers */
 import { push } from 'react-router-redux';
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, SAVE_TOKEN } from '../types';
 
-const ROOT_URL = 'http://localhost:3003';
-const postOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' } };
+const ROOT_URL = 'http://localhost:8080';
 
-const authUser = () => ({
+const authUser = WanderId => ({
   type: AUTH_USER,
+  payload: WanderId,
 });
 
 const unauthUser = () => ({
@@ -24,9 +24,15 @@ const authError = error => ({
 });
 
 export const signup = ({ email, password, ...rest }) => (dispatch) => {
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
   fetch(`${ROOT_URL}/signup`, {
-    ...postOptions,
-    body: JSON.stringify({ email, password, rest }),
+    method: 'POST',
+    headers,
+    mode: 'cors',
+    cache: 'default',
+    body: JSON.stringify({ email, password, ...rest }),
   })
     .then((response) => {
       const contentType = response.headers.get('content-type');
@@ -38,7 +44,7 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
               if (token) {
                 dispatch(authUser());
                 dispatch(saveToken(token));
-                dispatch(push('/wanderer/dashboard'));
+                dispatch(push('/wanderer/welcome'));
               }
             });
         }
@@ -67,7 +73,8 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
 
 export const signin = ({ email, password }) => (dispatch) => {
   fetch(`${ROOT_URL}/signin`, {
-    ...postOptions,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   })
     .then((response) => {
@@ -77,9 +84,9 @@ export const signin = ({ email, password }) => (dispatch) => {
         if (contentType && contentType.includes('application/json')) {
           response
             .json()
-            .then(({ token = '' }) => {
+            .then(({ token = '', id }) => {
               if (token) {
-                dispatch(authUser());
+                dispatch(authUser(id));
                 dispatch(saveToken(token));
                 dispatch(push('/wanderer/dash'));
               }

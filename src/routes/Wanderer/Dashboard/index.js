@@ -1,84 +1,86 @@
-/* global fetch localStorage */
 import React from 'react';
-import { ContentContainer, SideBar } from 'feuxworks';
-import { lifecycle, compose, mapProps } from 'recompose';
+import { Flex, Box } from 'grid-styled';
+import { 
+	SideBar,
+	ProfileImage,
+	ButtonLink,
+	TripCard,
+} from 'feuxworks';
 import styled from 'styled-components';
+import TEMPIMG from '../../../images/outdoors.jpg';
+import KEVIN from '../../../images/kevin.jpg';
 
-const Wrapper = styled.main`
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  grid-gap: 1rem;
-  grid-auto-flow: dense; */
-  height: 100vh;
-
-`;
-const Box = styled.main`
-  grid-row: span 2;
-  grid-column: span 2;
-  background-color: #777;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    width: 100%;
-    max-height: 100%;
-  }
+const CallToAction = styled(ButtonLink)`
+	background-color: ${({ color }) => color || '#0ef776'};
+	padding: 2rem;
+	font-size: 1.5rem;
+	margin-right: 1rem;
+	margin-bottom: 1rem;
 `;
 
-const enhance = compose(lifecycle({
-  state: {
-    data: {
-      message: '',
-    },
-  },
-  componentWillMount() {
-    fetch('http://localhost:3003', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('token'),
-      },
-    }).then((res) => {
-      res
-        .json()
-        .then((json) => {
-          this.setState({ data: json });
-        });
-    });
-  },
-}));
+const InfoText = styled.p`
+margin-bottom: 2.5rem;
+text-transform: lowercase;
+font-family: cursive;
+`;
 
-const VisitorDashboard = props => (
-  <Wrapper>
-    <SideBar>
-      <ContentContainer>
-        <Box>
-          <img src="//unsplash.it/1600/500/?random" alt="img" />
-          <h3>并温听袋由却。</h3>
-        </Box>
-        <Box>
-          <img src="//unsplash.it/1601/500/?random" alt="img" />
-          <h3>形端宝帝！室确归整落教拉？</h3>
-        </Box>
-        <Box><h3>并温听袋由却</h3>
-          <img src="//unsplash.it/1300/500/?random" alt="img" />
-        </Box>
-        <Box>
-          <h3>并温听袋由却</h3>
-          <img src="//unsplash.it/1301/500/?random" alt="img" />
-        </Box>
-        <Box>
-          <img src="//unsplash.it/1800/500/?random" alt="img" />
-          <span>并温听袋</span>
-        </Box>
-        <Box>
-          <img src="//unsplash.it/1801/500/?random" alt="img" />
-          <span>并温听袋</span>
-        </Box>
-      </ContentContainer>
-    </SideBar>
-  </Wrapper>
+const WandererDash = ({ data }) => (
+<Flex>
+	<SideBar>
+		<ProfileImage src={KEVIN} alt="profile" />
+		<p className="h5 xh2 bold">“White space is to be regarded as an active element, not a passive background.”</p>
+	</SideBar>
+  <Flex
+			wrap
+			mt="4rem"
+			ml="1rem"
+			mr="1rem"
+			justify="space-around"
+		>
+			<Flex flex="1 1 100%" wrap justify="space-between" mt="1rem">
+				<Box>
+					<CallToAction to="/wanderer/new/trip">New Trip</CallToAction>
+					<CallToAction color="#0ed2f7" to="/wanderer/inspiration">Get Inspired</CallToAction>
+				</Box>
+				<Box>
+				</Box>
+			</Flex>
+			<Box w={[1, 1, 1, 2 / 3]}>
+				<InfoText className="h2 bold" style={{fontFamily: "Pacifico"}}>Upcoming trips</InfoText>
+
+				<TripCard data={{
+					to: '#smoney',
+					locationName: 'Lyon, France',
+					backgroundImg: TEMPIMG,
+					cheapestFlight: '437',
+					currencySymbol: '$',
+				}}
+				/>
+				<TripCard data={{
+					to: '#smoney',
+					locationName: 'Lyon, France',
+					backgroundImg: TEMPIMG,
+					cheapestFlight: '437',
+					currencySymbol: '$',
+				}}
+				/>
+				<TripCard data={{
+					to: '#smoney',
+					locationName: 'Lyon, France',
+					backgroundImg: TEMPIMG,
+					cheapestFlight: '437',
+					currencySymbol: '$',
+				}}
+				/>
+			</Box>
+			<Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
+			<InfoText className="h2 bold" style={{fontFamily: "Pacifico"}}>Dream Trips</InfoText>
+				<TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
+				<TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
+				<TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
+			</Box>
+		</Flex>
+</Flex>
 );
 
-export default enhance(VisitorDashboard);
+export default WandererDash;

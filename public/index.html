@@ -1,11 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no"/>
+    <meta name="theme-color" content="#000000">
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="youme.world">
+    <meta property="og:url" content="youme.world">
+    <meta property="og:image" content="https://media.graphcms.com/output=f:jpg/resize=width:1200,height:1200,fit:max/loupzSmHRKr5Zj82nb2P">
+    <meta property="business:contact_data:street_address" content="">
+    <meta property="business:contact_data:locality" content="">
+    <meta property="business:contact_data:region" content="">
+    <meta property="business:contact_data:postal_code" content="">
+    <meta property="business:contact_data:country_name" content="USA">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
+      Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
 
@@ -13,15 +28,26 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <title>youme.world</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6U3EySAnVr7UPa_I5KDaINIxzDdSaJg0&libraries=geometry,drawing,places"></script>
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Pacifico');
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-72114421-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-72114421-3');
+    </script>
   </head>
   <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -30,8 +56,8 @@
       You can add webfonts, meta tags, or analytics to this file.
       The build step will place the bundled scripts into the <body> tag.
 
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
 </html>

@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
+import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 
 export default function (ComposedComponent) {
 	class Authenticated extends Component {
-		static contextTypes = {
-			router: PropTypes.object,
-		}
-
 		componentWillMount = () => {
+			console.log('object');
 			if (!this.props.auth.authenticated) {
-				
+				push('/signin');
 			}
 		}
 		
     render() {
       return (
-        <ComposedComponent {...this.props} />
-      );
+				<div>
+					<ComposedComponent {...this.props} />					
+				</div>
+			);
     }
   }
 }

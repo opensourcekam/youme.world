@@ -11,8 +11,12 @@ import './App.css';
 
 /** ROUTES */
 import { Home, Notfound, SignUp, SignIn, SignOut } from './routes';
+import { RequireAuth } from './hocs';
 import FirstTimeForm from './routes/Wanderer/FirstTimeUserForm';
 import WandererDash from './routes/Wanderer/Dashboard';
+import WandererInspiration from './routes/Wanderer/Inspiration';
+import NewTripForm from './routes/Wanderer/Trip/Form';
+import TripDash from './routes/Wanderer/Trip/Dash';
 
 /** REDUX */
 import configureStore, { history } from './redux/configureStore';
@@ -31,8 +35,13 @@ const App = () => (
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/signout" component={SignOut} />
-            <Route exact path="/new/wanderer" component={FirstTimeForm} />
-            <Route exact path="/wanderer/dash" component={WandererDash} />
+						<Route exact path="/wanderer/welcome" component={FirstTimeForm} />
+
+						<Route exact path="/wanderer/dash" component={WandererDash} />
+						<Route exact path="/wanderer/new/trip" component={NewTripForm} />
+						<Route exact path="/wanderer/inspiration" component={WandererInspiration} />
+						<Route exact path="/trip/dash" component={TripDash} />
+						{/* <Route exact path="/trip/shopping" component={TripShopping} /> */}
 
             <Route exact component={Notfound} />
           </Switch>

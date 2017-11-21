@@ -13,9 +13,6 @@ const MapWrap = styled.div`
 	min-width: 100%;
 `;
 
-const StyledMap = styled(Map)`
-	height: 300px;
-`;
 
 const Page1 = props => (
   <Container>
@@ -27,9 +24,6 @@ const Page1 = props => (
         </div>
       </label>
     </WizardPage>
-    <MapWrap>
-      <StyledMap />
-    </MapWrap>
   </Container>
 );
 
