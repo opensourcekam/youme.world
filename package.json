@@ -1,7 +1,7 @@
 {
-  "name": "youme.plan-frontend",
+  "name": "youme.world-frontend",
   "version": "0.1.0",
-  "main": "server/start.js",
+  "main": "start.js",
   "engine": {
     "node": "*",
     "npm": "*"
