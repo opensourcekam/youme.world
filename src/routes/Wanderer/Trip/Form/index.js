@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { get } from 'lodash';
+import { withState } from 'recompose';
+import { reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
+
 import { 
 	Banner,
 	Map,
-	InputCard,
+	MapCard
 } from 'feuxworks';
 
 const StyledBanner = styled(Banner)`
@@ -19,21 +23,28 @@ const StyledBanner = styled(Banner)`
 // location
 // coordinates
 // budget
+const enhance = withState('geometry', 'onSelectPlace', {
+  lat: 59.938043,
+  lng: 30.337157,
+});
 
-const NewTripForm = props => (	
+const NewTripForm = ({ geometry, onSelectPlace}) => (	
 	<Flex flex="1 1 100%" column pt="4.5rem">
-			<StyledBanner
-				background={`#123093 url(http://unsplash.it/1400/?random)`}
-				height="400px"
-			/>
-			<Flex m="1rem" justify="space-between">
-				<span>"Where are we going this time?"</span>
-				<InputCard name="location" placeholder="Where to next?" Inner={<Map />} />
-				{/* <InputCard name="location" placeholder="Where to next?" Inner={<Map />} />
-				<InputCard name="location" placeholder="Where to next?" Inner={<Map />} />
-				<InputCard name="location" placeholder="Where to next?" Inner={<Map />} /> */}
-			</Flex>
+		<Box>
+				<MapCard
+            name="location"
+            placeholder="Where to next?"
+            onPlacesChanged={place => onSelectPlace({
+							lat: get(place, '[0].geometry.location.lat')(),
+              lng: get(place, '[0].geometry.location.lng')(),
+            })}
+            geometry={geometry}
+            zoom={10}
+						/>
+			</Box>
 	</Flex>
 );
 
-export default NewTripForm;
+export default reduxForm({
+  form: 'new-trip',
+})(enhance(NewTripForm));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex, Box } from 'grid-styled';
 import { 
-	Banner
+	Banner,
 } from 'feuxworks';
 import styled from 'styled-components';
 import TEMPIMG from '../../../images/outdoors.jpg';

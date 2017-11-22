@@ -1,8 +1,9 @@
-/* global fetch Headers */
+import axios from 'axios';
 import { push } from 'react-router-redux';
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, SAVE_TOKEN } from '../types';
 
-const ROOT_URL = 'http://localhost:8080';
+const ROOT_URL = '//youme-data-youme.b9ad.pro-us-east-1.openshiftapps.com';
+// const ROOT_URL = '//localhost:8080';
 
 const authUser = WanderId => ({
   type: AUTH_USER,
@@ -24,47 +25,20 @@ const authError = error => ({
 });
 
 export const signup = ({ email, password, ...rest }) => (dispatch) => {
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-
-  fetch(`${ROOT_URL}/signup`, {
-    method: 'POST',
-    headers,
-    mode: 'cors',
-    cache: 'default',
-    body: JSON.stringify({ email, password, ...rest }),
+  axios.post(`${ROOT_URL}/signup`, {
+    email,
+    password,
+    ...rest,
   })
     .then((response) => {
-      const contentType = response.headers.get('content-type');
-      if (response.ok) {
-        if (contentType && contentType.includes('application/json')) {
-          response
-            .json()
-            .then(({ token = '' }) => {
-              if (token) {
-                dispatch(authUser());
-                dispatch(saveToken(token));
-                dispatch(push('/wanderer/welcome'));
-              }
-            });
+      if (response.statusText === 'OK') {
+        const { token } = response.data;
+        if (token) {
+          dispatch(authUser());
+          dispatch(saveToken(token));
+          dispatch(push('/wanderer/welcome'));
         }
-      } else {
-        if (contentType && contentType.includes('application/json')) {
-          response
-            .json()
-            .then((json) => {
-              if (json) {
-                console.log(json);
-                return dispatch(authError(json));
-              }
-              return 0;
-            });
-        }
-
-        throw new Error(response);
       }
-
-      return 1;
     })
     .catch((error) => {
       dispatch(authError({ error }));
@@ -72,34 +46,21 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
 };
 
 export const signin = ({ email, password }) => (dispatch) => {
-  fetch(`${ROOT_URL}/signin`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password }),
+  axios.post(`${ROOT_URL}/signin`, {
+    email,
+    password,
   })
     .then((response) => {
-      console.log(response);
-      if (response.ok) {
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-          response
-            .json()
-            .then(({ token = '', id }) => {
-              if (token) {
-                dispatch(authUser(id));
-                dispatch(saveToken(token));
-                dispatch(push('/wanderer/dash'));
-              }
-            });
+      if (response.statusText === 'OK') {
+        const { token, id } = response.data;
+        if (token) {
+          dispatch(authUser(id));
+          dispatch(saveToken(token));
+          dispatch(push('/wanderer/dash'));
         }
-      } else {
-        throw new Error(response.statusText);
       }
-
-      return 1;
     })
     .catch((error) => {
-      console.log(error);
       dispatch(authError({ error, text: 'password incorrect' }));
     });
 };

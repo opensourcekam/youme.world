@@ -7,8 +7,9 @@
     "npm": "*"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "express": "^4.16.2",
-    "feuxworks": "latest",
+    "feuxworks": "^1.0.14",
     "grid-styled": "^2.0.0-11",
     "history": "^4.7.2",
     "morgan": "^1.9.0",
@@ -28,11 +29,13 @@
     "styled-components": "^2.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "react-scripts dev",
+    "start": "node start.js",
+    "dev": "react-scripts start",
+    "server:dev": "nodemon start.js",
     "build": "react-scripts build  && cp -r build ../youme.world.ui-server/",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fireworks": "yarn upgrade feuxworks"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
