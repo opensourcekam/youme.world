@@ -32,9 +32,9 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
   })
     .then((response) => {
       if (response.statusText === 'OK') {
-        const { token } = response.data;
+        const { token, id } = response.data;
         if (token) {
-          dispatch(authUser());
+          dispatch(authUser(id));
           dispatch(saveToken(token));
           dispatch(push('/wanderer/welcome'));
         }
@@ -45,10 +45,11 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
     });
 };
 
-export const signin = ({ email, password }) => (dispatch) => {
+export const signin = ({ email, password, ...rest }) => (dispatch) => {
   axios.post(`${ROOT_URL}/signin`, {
     email,
     password,
+    ...rest,
   })
     .then((response) => {
       if (response.statusText === 'OK') {

@@ -11,7 +11,6 @@ import './App.css';
 
 /** ROUTES */
 import { Home, Notfound, SignUp, SignIn, SignOut } from './routes';
-import { RequireAuth } from './hocs';
 import FirstTimeForm from './routes/Wanderer/FirstTimeUserForm';
 import WandererDash from './routes/Wanderer/Dashboard';
 import WandererInspiration from './routes/Wanderer/Inspiration';
@@ -21,9 +20,17 @@ import TripDash from './routes/Wanderer/Trip/Dash';
 /** REDUX */
 import configureStore, { history } from './redux/configureStore';
 import { AUTH_USER } from './redux/types';
+import checkAuth from './hocs/RequireAuth';
 
 export const store = configureStore();
-if (localStorage.getItem('token')) store.dispatch({ type: AUTH_USER });
+
+if (localStorage.getItem('token')) {
+  store.dispatch({
+    type: AUTH_USER,
+    payload: localStorage.getItem('WandererId'),
+  });
+}
+
 
 const App = () => (
   <ThemeProvider theme={theme}>
@@ -35,13 +42,13 @@ const App = () => (
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/signout" component={SignOut} />
-						<Route exact path="/wanderer/welcome" component={FirstTimeForm} />
 
-						<Route exact path="/wanderer/dash" component={WandererDash} />
-						<Route exact path="/wanderer/new/trip" component={NewTripForm} />
-						<Route exact path="/wanderer/inspiration" component={WandererInspiration} />
-						<Route exact path="/trip/dash" component={TripDash} />
-						{/* <Route exact path="/trip/shopping" component={TripShopping} /> */}
+            <Route exact path="/wanderer/welcome" component={checkAuth(FirstTimeForm)} />
+            <Route exact path="/wanderer/dash" component={checkAuth(WandererDash)} />
+            <Route exact path="/wanderer/new/trip" component={checkAuth(NewTripForm)} />
+            <Route exact path="/wanderer/inspiration" component={checkAuth(WandererInspiration)} />
+            <Route exact path="/wanderer/trip/:tripId" component={checkAuth(TripDash)} />
+
 
             <Route exact component={Notfound} />
           </Switch>

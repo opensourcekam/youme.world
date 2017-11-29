@@ -1,14 +1,13 @@
 import React from 'react';
-import { Card } from 'feuxworks';
+import { Flex, Box } from 'grid-styled';
 import styled from 'styled-components';
 
-const ContentWrap = styled(Card)`
-  padding: 0 20rem;
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const ContentWrap = styled(Flex).attrs({
+  justify: 'center',
+  align: 'center',
+})`
+	height: 90vh;
+	text-align: center;
 `;
 
 const H1 = styled.h1`
@@ -21,12 +20,12 @@ const H1 = styled.h1`
 
 const Notfound = () =>
   (
-    <main>
-      <ContentWrap>
+    <ContentWrap mt="4.5rem">
+      <Box>
         <H1>404</H1>
         <h3>Plan not found</h3>
-      </ContentWrap>
-    </main>
+      </Box>
+    </ContentWrap>
   );
 
 export default Notfound;

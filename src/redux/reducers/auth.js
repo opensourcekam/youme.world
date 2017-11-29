@@ -11,8 +11,7 @@ export default (state = {
 }, action) => {
   switch (action.type) {
     case AUTH_USER:
-      console.log(action);
-      // localStorage.setItem('WandererId', action.payload);
+      localStorage.setItem('WandererId', action.payload);
       return {
         ...state,
         authenticated: true,
@@ -20,6 +19,7 @@ export default (state = {
       };
     case UNAUTH_USER:
       localStorage.removeItem('token');
+      localStorage.removeItem('WandererId');
       return {
         ...state,
         authenticated: false,

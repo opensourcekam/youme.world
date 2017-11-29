@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { routerReducer, routerMiddleware as routerMiddle } from 'react-router-redux';
-import { authReducer } from './reducers';
+import { authReducer, tripReducer } from './reducers';
 
 export const history = createHistory();
 
@@ -12,12 +12,13 @@ const app = combineReducers({
   form: formReducer,
   router: routerReducer,
   auth: authReducer,
+  trip: tripReducer,
 });
 
 const createStoreWithMiddleware = applyMiddleware(
   thunk,
   routerMiddle(history),
-  createLogger(),
+  // createLogger(),
 )(createStore);
 
 const configureStore = () => createStoreWithMiddleware(

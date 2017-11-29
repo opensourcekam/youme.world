@@ -1,14 +1,14 @@
 import React from 'react';
 import { Flex, Box } from 'grid-styled';
-import { 
-	SideBar,
-	ProfileImage,
-	ButtonLink,
-	TripCard,
+import {
+  SideBar,
+  ProfileImage,
+  ButtonLink,
+  TripCard,
 } from 'feuxworks';
 import styled from 'styled-components';
 import TEMPIMG from '../../../images/outdoors.jpg';
-import KEVIN from '../../../images/kevin.jpg';
+import SelfIMG from '../../../images/self.jpg';
 
 const CallToAction = styled(ButtonLink)`
 	background-color: ${({ color }) => color || '#0ef776'};
@@ -21,66 +21,48 @@ const CallToAction = styled(ButtonLink)`
 const InfoText = styled.p`
 margin-bottom: 2.5rem;
 text-transform: lowercase;
-font-family: cursive;
+font-family: 'Pacifico', cursive;
 `;
 
 const WandererDash = ({ data }) => (
-<Flex>
-	<SideBar>
-		<ProfileImage src={KEVIN} alt="profile" />
-		<p className="h5 xh2 bold">“White space is to be regarded as an active element, not a passive background.”</p>
-	</SideBar>
-  <Flex
-			wrap
-			mt="4rem"
-			ml="1rem"
-			mr="1rem"
-			justify="space-around"
-		>
-			<Flex flex="1 1 100%" wrap justify="space-between" mt="1rem">
-				<Box>
-					<CallToAction to="/wanderer/new/trip">New Trip</CallToAction>
-					<CallToAction color="#0ed2f7" to="/wanderer/inspiration">Get Inspired</CallToAction>
-				</Box>
-				<Box>
-				</Box>
-			</Flex>
-			<Box w={[1, 1, 1, 2 / 3]}>
-				<InfoText className="h2 bold" style={{fontFamily: "Pacifico"}}>Upcoming trips</InfoText>
-
-				<TripCard data={{
+  <Flex>
+    <SideBar>
+      <ProfileImage src={SelfIMG} alt="profile" />
+      <p className="h5 xh2 bold">“White space is to be regarded as an active element, not a passive background.”</p>
+    </SideBar>
+    <Flex
+      wrap
+      mt="4rem"
+      ml="1rem"
+      mr="1rem"
+      justify="space-around"
+    >
+      <Flex flex="1 1 100%" wrap justify="space-between" mt="1.5rem">
+        <Box>
+          <CallToAction to="/wanderer/new/trip">New Trip</CallToAction>
+          <CallToAction color="#0ed2f7" to="/wanderer/inspiration">Get Inspired</CallToAction>
+        </Box>
+        <Box />
+      </Flex>
+      <Box w={[1, 1, 1, 2 / 3]}>
+        <InfoText className="h2 bold">Upcoming trips</InfoText>
+        <TripCard data={{
 					to: '#smoney',
 					locationName: 'Lyon, France',
 					backgroundImg: TEMPIMG,
 					cheapestFlight: '437',
 					currencySymbol: '$',
 				}}
-				/>
-				<TripCard data={{
-					to: '#smoney',
-					locationName: 'Lyon, France',
-					backgroundImg: TEMPIMG,
-					cheapestFlight: '437',
-					currencySymbol: '$',
-				}}
-				/>
-				<TripCard data={{
-					to: '#smoney',
-					locationName: 'Lyon, France',
-					backgroundImg: TEMPIMG,
-					cheapestFlight: '437',
-					currencySymbol: '$',
-				}}
-				/>
-			</Box>
-			<Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
-			<InfoText className="h2 bold" style={{fontFamily: "Pacifico"}}>Dream Trips</InfoText>
-				<TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
-				<TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
-				<TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
-			</Box>
-		</Flex>
-</Flex>
+        />
+      </Box>
+      <Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
+        <InfoText className="h2 bold">Dream Trips</InfoText>
+        <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
+        {/* <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} /> */}
+        {/* <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} /> */}
+      </Box>
+    </Flex>
+  </Flex>
 );
 
 export default WandererDash;

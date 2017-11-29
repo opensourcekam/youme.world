@@ -1,50 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { get } from 'lodash';
-import { withState } from 'recompose';
-import { reduxForm } from 'redux-form';
-import styled from 'styled-components';
-import { Flex, Box } from 'grid-styled';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+import { func } from 'prop-types';
+import { newTrip } from '../../../../redux/actions/trip';
+import NewTripForm from './newTripForm';
 
-import { 
-	Banner,
-	Map,
-	MapCard
-} from 'feuxworks';
 
-const StyledBanner = styled(Banner)`
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 500px;
-`;
+const enhance = compose(connect(null, dispatch => ({
+  createNewTrip: data =>
+    dispatch(newTrip(data)),
+})));
 
-// startOfTrip
-// endOfTrip
-// location
-// coordinates
-// budget
-const enhance = withState('geometry', 'onSelectPlace', {
-  lat: 59.938043,
-  lng: 30.337157,
-});
-
-const NewTripForm = ({ geometry, onSelectPlace}) => (	
-	<Flex flex="1 1 100%" column pt="4.5rem">
-		<Box>
-				<MapCard
-            name="location"
-            placeholder="Where to next?"
-            onPlacesChanged={place => onSelectPlace({
-							lat: get(place, '[0].geometry.location.lat')(),
-              lng: get(place, '[0].geometry.location.lng')(),
-            })}
-            geometry={geometry}
-            zoom={10}
-						/>
-			</Box>
-	</Flex>
+const NewTrip = ({ createNewTrip }) => (
+  <NewTripForm onSubmit={values => createNewTrip(values)} />
 );
 
-export default reduxForm({
-  form: 'new-trip',
-})(enhance(NewTripForm));
+NewTrip.propTypes = {
+  createNewTrip: func.isRequired,
+};
+
+export default enhance(NewTrip);
