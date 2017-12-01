@@ -8,7 +8,7 @@ import {
   Footer,
   ResponsiveNav,
   CTAButton,
-  // SignoutButton,
+  SignoutButton,
 } from 'feuxworks';
 
 const footerAboutLinks = [
@@ -19,9 +19,12 @@ const footerAboutLinks = [
 ];
 
 const Layout = ({ children, auth, ...props }) => {
-  const buttonLink = (auth.authenticated) ?
-    [{ to: '/wanderer/dash', text: 'My Trips', component: CTAButton }, { to: '/signout', text: 'Signout', component: CTAButton }] :
-    [{ to: '/signin', text: 'Do something', component: CTAButton }];
+  const buttonLink = (auth.authenticated) ? [
+    { to: '/wanderer/dash', text: 'My Trips', component: CTAButton },
+    { to: '/signout', text: 'Signout', component: CTAButton },
+  ] : [
+    { to: '/signin', text: 'Do something', component: CTAButton },
+  ];
 
   const navLinks = [{ to: '/faq', text: 'FAQ' },
     { to: '/inspiration_all_around_us', text: 'Get inspired' },

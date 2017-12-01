@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   HomeLead,
-  Card,
 } from 'feuxworks';
 import styled from 'styled-components';
 import { Flex } from 'grid-styled';
@@ -13,18 +12,15 @@ const H2 = styled.h2`
 	 color: #3D3E40;
 `;
 
-const ContentWrap = styled(Card)`
-`;
-
 const ImageCta = styled.img`
 	border-radius: 50%;
 	margin: 0 0 2em 0;
 `;
 
 const Centered = styled(Flex).attrs({
-	justify: "center",
-	align: "center",
-	column: true
+  justify: 'center',
+  align: 'center',
+  column: true,
 })`
 	text-align: center;
 `;
@@ -45,9 +41,9 @@ const Home = () =>
 				link: '/signup',
 			}}
       />
-			<Centered 
-			p={["3rem", "15rem"]}
-			>
+      <Centered
+        p={['3rem', '15rem']}
+      >
         <H2>How it works</H2>
         <Centered>
           <H3>This version of youme.world is designed to help you find things to do in your dream destinations!</H3>

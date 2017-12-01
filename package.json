@@ -30,6 +30,7 @@
     "react-reveal": "^0.7.3",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "next",
+    "react-router-server": "^4.2.2",
     "react-scripts": "1.0.14",
     "react-typist": "^2.0.4",
     "recompose": "^0.26.0",
@@ -46,7 +47,9 @@
     "build": "react-scripts build  && cp -r build ../youme.world.ui-server/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "fire": "yarn upgrade --latest feuxworks"
+    "prefire": "rimraf node_modules/",
+    "fire": "yarn upgrade --latest feuxworks",
+    "postfire": "yarn dev"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -59,5 +62,5 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://0.0.0.0:8080"
 }

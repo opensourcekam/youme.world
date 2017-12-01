@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { ContentContainer, CardArraySelect, WizardPage, InterestCheckboxGrid } from 'feuxworks';
+// import PropTypes from 'prop-types';
+import { ContentContainer, CardArraySelect, WizardPage } from 'feuxworks';
 import styled from 'styled-components';
 
 const Container = styled(ContentContainer)`

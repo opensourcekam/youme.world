@@ -1,5 +1,4 @@
 import React from 'react';
-import { withProps, compose } from 'recompose';
 import { Wizard } from 'feuxworks';
 import Page1 from './page1';
 import Page2 from './page2';

@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import thunk from 'redux-thunk';
-import { createLogger } from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
 import { routerReducer, routerMiddleware as routerMiddle } from 'react-router-redux';
 import { authReducer, tripReducer } from './reducers';
+// import { createLogger } from 'redux-logger';
 
 export const history = createHistory();
 

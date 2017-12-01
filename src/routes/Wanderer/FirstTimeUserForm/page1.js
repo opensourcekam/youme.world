@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Map, ContentContainer, TextInput, WizardPage } from 'feuxworks';
+// import PropTypes from 'prop-types';
+import { ContentContainer, TextInput, WizardPage, Emoji } from 'feuxworks';
 import styled from 'styled-components';
 
 const Container = styled(ContentContainer)`
@@ -9,7 +9,7 @@ const Container = styled(ContentContainer)`
 	align-items: center;
 `;
 
-const MapWrap = styled.div`
+const Label = styled.label`
 	min-width: 100%;
 `;
 
@@ -17,12 +17,12 @@ const MapWrap = styled.div`
 const Page1 = props => (
   <Container>
     <WizardPage {...props}>
-      <label>
-        <h3>Where are you headed? ✈️🌏</h3>
+      <Label>
+        <h3>Where are you headed? <Emoji icon="✈️🌏" /></h3>
         <div>
           <TextInput name="going-to" component="input" placeholder="NYC, NY" />
         </div>
-      </label>
+      </Label>
     </WizardPage>
   </Container>
 );

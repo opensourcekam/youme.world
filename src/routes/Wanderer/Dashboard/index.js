@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Box } from 'grid-styled';
+import { lifecycle } from 'recompose';
 import {
   SideBar,
   ProfileImage,
@@ -8,7 +9,17 @@ import {
 } from 'feuxworks';
 import styled from 'styled-components';
 import TEMPIMG from '../../../images/outdoors.jpg';
-import SelfIMG from '../../../images/self.jpg';
+import SelfIMG from '../../../images/user.png';
+
+const enhance = lifecycle({
+  componentWillMount: () => {
+    fetch('http://youme-data-youme.b9ad.pro-us-east-1.openshiftapps.com/graphql?query=%7B%0A%20%20wanderers%20%7B%0A%20%20%20%20id%0A%20%20%7D%0A%7D&variables=null', {})
+      .then(data => data.json())
+      .then(console.log)
+      .catch(err => console.error(err));
+  },
+
+});
 
 const CallToAction = styled(ButtonLink)`
 	background-color: ${({ color }) => color || '#0ef776'};
@@ -65,4 +76,4 @@ const WandererDash = ({ data }) => (
   </Flex>
 );
 
-export default WandererDash;
+export default enhance(WandererDash);

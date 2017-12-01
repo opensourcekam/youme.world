@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
+import { Emoji } from 'feuxworks';
+
 import { lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
 import { signout } from '../../redux/actions/auth';
@@ -35,17 +37,16 @@ const H1 = styled.h1`
   margin: 0;
 `;
 
-const SignOut = () =>
-  (
-    <ContentWrap mt="4.5rem">
-      <Box>
-        <H1>See you soon! ✈️</H1>
-      </Box>
-    </ContentWrap>
-  );
+const SignOut = () => (
+  <ContentWrap mt="4.5rem">
+    <Box>
+      <H1>See you soon! <Emoji name="✈️" /></H1>
+    </Box>
+  </ContentWrap>
+);
 
 SignOut.propTypes = {
 
 };
 
-export default SignOut;
+export default enhance(SignOut);

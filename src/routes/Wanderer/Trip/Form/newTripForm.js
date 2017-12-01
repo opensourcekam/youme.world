@@ -1,48 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import Typist from 'react-typist';
+import moment from 'moment';
 import { get } from 'lodash';
+import { connect } from 'react-redux';
 import { Flex, Box } from 'grid-styled';
-import { compose } from 'recompose';
 import { reduxForm } from 'redux-form';
 import styled, { keyframes } from 'styled-components';
-import { Banner, Button, MapCard, CalendarCard } from 'feuxworks';
-import Typist from 'react-typist';
+import { func, bool, string } from 'prop-types';
+import { Button, MapCard, CalendarCard } from 'feuxworks';
+import { renderComponent, withHandlers, withState, compose, branch } from 'recompose';
 
-const enhance = compose(
-  connect((state) => {
-    const placeData = get(state.form['new-trip'], 'values.place');
-    const data = (typeof placeData === 'string') ? JSON.parse(placeData) : {};
+import { createTrip } from '../../../../graphql/mutations/trip';
 
-    return ({
-      formattedAddress: data.formatted_address,
-    });
-  }, null),
-  reduxForm({
-    form: 'new-trip',
-  }),
-);
-
-const Form = styled.form`
-`;
-const fadeInRight = keyframes`
-	0% {
-		 opacity: 0;
-		 transform: translateX(-100px);
-	}
-	100% {
-		 opacity: 1;
-		 transform: translateX(0);
-	}`;
-
-const FadeIn = styled.h2`
-	animation: ${fadeInRight} 300ms;
-`;
+const fadeInRight = keyframes`0% {opacity: 0;transform: translateX(-100px);}100% {opacity: 1;transform: translateX(0);}`;
+const FadeIn = styled.h2`animation: ${fadeInRight} 300ms;`;
 
 const NewTripForm = ({
-  handleSubmit, onSubmit, pristine, submitting, formattedAddress,
+  handleSubmit, pristine,
+  submitting, formattedAddress,
 }) => (
-  <Form onSubmit={handleSubmit(onSubmit)}>
+  <form onSubmit={handleSubmit}>
     <Flex flex="1 1 100%" column pt="5.5rem" m={['1rem', '5rem']} mt="0rem" mb="0rem">
       <Box ml="1rem">
         <Typist cursor={{ show: false }}>
@@ -67,7 +44,47 @@ const NewTripForm = ({
 						Trip view
       </Button>
     </Flex>
-  </Form>
+  </form>
 );
 
-export default enhance(NewTripForm);
+NewTripForm.propTypes = {
+  handleSubmit: func.isRequired,
+  pristine: bool.isRequired,
+  onSubmit: func.isRequired,
+  submitting: bool.isRequired,
+  formattedAddress: string.isRequired,
+};
+
+export default compose(
+  withState('submitted', 'setSubmitted', false),
+  createTrip,
+  connect((state) => {
+    const WandererId = get(state.auth, 'WandererId');
+    const placeData = get(state.form['new-trip'], 'values.place');
+    const data = (typeof placeData === 'string') ? JSON.parse(placeData) : {};
+    return ({
+      formattedAddress: data.formatted_address,
+      WandererId,
+      start: moment().add(7, 'days'),
+      end: moment().add(14, 'days'),
+    });
+  }, null),
+  withHandlers({
+    onSubmit: ({
+      createTrip, WandererId, start, end,
+    }) => values => createTrip({
+      ...values,
+      WandererId,
+      start,
+      end,
+    }),
+    onSubmitSuccess: ({ setSubmitted }) => () => setSubmitted(true),
+  }),
+  branch(
+    ({ submitted }) => submitted,
+    renderComponent(() => <Flex pt="5.5rem" ><h1>Success!</h1></Flex>),
+  ),
+  reduxForm({
+    form: 'new-trip',
+  }),
+)(NewTripForm);

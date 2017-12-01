@@ -7,12 +7,11 @@ import NewTripForm from './newTripForm';
 
 
 const enhance = compose(connect(null, dispatch => ({
-  createNewTrip: data =>
-    dispatch(newTrip(data)),
+  createNewTrip: data => dispatch(newTrip(data)),
 })));
 
 const NewTrip = ({ createNewTrip }) => (
-  <NewTripForm onSubmit={values => createNewTrip(values)} />
+  <NewTripForm />
 );
 
 NewTrip.propTypes = {

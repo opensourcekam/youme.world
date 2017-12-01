@@ -18,8 +18,8 @@ export default (state = {
         WandererId: action.payload,
       };
     case UNAUTH_USER:
-      localStorage.removeItem('token');
-      localStorage.removeItem('WandererId');
+      window.localStorage.clear();
+      console.log(localStorage);
       return {
         ...state,
         authenticated: false,
