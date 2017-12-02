@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from 'grid-styled';
+import { Flex, Box } from 'grid-styled';
 import {
   Banner,
 } from 'feuxworks';
@@ -13,14 +13,27 @@ const StyledBanner = styled(Banner)`
 `;
 
 const WandererInspiration = ({ data }) => (
-  <Flex flex="1 1 100%" column pt="4.5rem">
-    <StyledBanner
-      background={`#123093 url(${TEMPIMG})`}
-      height="400px"
-    />
-    <Flex m="1rem">
-      <span>"Inspire them to travel to the unknown and they will travel to the unknown."</span>
-    </Flex>
+  <Flex
+    flex="1 1 100%"
+    pt="8.5rem"
+    pb="4.5rem"
+    wrap
+    justify="center"
+    align="center"
+  >
+    {Array(8).fill(null).map(() => (
+      <Flex
+        px="1rem"
+        mx="0.5rem"
+        py="1rem"
+        my="1rem"
+        w={[1, 1 / 5]}
+        justify="center"
+        align="center"
+      >
+        <p>Tokyo, Japan</p>
+      </Flex>
+		))}
   </Flex>
 );
 

@@ -55,5 +55,5 @@ Icon.defaultProps = {
 };
 
 export default styled(Icon)`
-	fill: ${({ theme, fill }) => theme.colors[fill]};
+	fill: #eee;
 `;

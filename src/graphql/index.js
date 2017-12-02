@@ -13,10 +13,9 @@ const client = new ApolloClient({
 
 client.query({
   query: gql`{ wanderers { id } }`,
-}).then((data) => {
+}).then(() => {
   console.log(`
-		CONNECTION IS OK:
-		${JSON.stringify(data, null, 3)}
+		GQL CONNECTION IS OK:
 	`);
 })
   .catch(console.error);

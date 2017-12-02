@@ -21,3 +21,21 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face{ 
+	font-family: 'Kust';
+	src: url('../fonts/web/EOT/Kust.eot');
+	src: url('../fonts/web/EOT/Kust.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/web/WOFF/Kust.woff') format('woff'),
+			 url('../fonts/web/TTF/Kust.ttf') format('truetype'),
+			 url('../fonts/web/SVG/Kust.svg#webfont') format('svg');
+}
+
+@font-face{ 
+	font-family: 'Rustico';
+	src: url('../fonts/web/OTF/Rustico.otf') format('opentype');
+	/* src: url('../fonts/web/EOT/Kust.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/web/WOFF/Kust.woff') format('woff'),
+			 url('../fonts/web/TTF/Kust.ttf') format('truetype'),
+			 url('../fonts/web/SVG/Kust.svg#webfont') format('svg'); */
+}

@@ -4,11 +4,18 @@ import moment from 'moment';
 import { CREATE_TRIP } from '../types';
 
 const initialState = {
-  location: '',
-  lat: null,
-  lng: null,
-  start: moment(),
-  end: moment().add(3, 'days'),
+  start: null,
+  end: null,
+  title: null,
+  budget: 0,
+  status: 'PLANNING',
+  longName: '',
+  place: '{}',
+  photos: '[]',
+  coordinates: {
+    lat: null,
+    lng: null,
+  },
 };
 
 export default (state = initialState, action) => {

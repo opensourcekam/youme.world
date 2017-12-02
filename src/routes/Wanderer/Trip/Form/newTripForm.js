@@ -8,9 +8,10 @@ import { reduxForm } from 'redux-form';
 import styled, { keyframes } from 'styled-components';
 import { func, bool, string } from 'prop-types';
 import { Button, MapCard, CalendarCard } from 'feuxworks';
-import { renderComponent, withHandlers, withState, compose, branch } from 'recompose';
+import { withHandlers, withState, compose } from 'recompose';
 
 import { createTrip } from '../../../../graphql/mutations/trip';
+import { pushToTrip } from '../../../../redux/actions/trip';
 
 const fadeInRight = keyframes`0% {opacity: 0;transform: translateX(-100px);}100% {opacity: 1;transform: translateX(0);}`;
 const FadeIn = styled.h2`animation: ${fadeInRight} 300ms;`;
@@ -68,7 +69,10 @@ export default compose(
       start: moment().add(7, 'days'),
       end: moment().add(14, 'days'),
     });
-  }, null),
+  }, dispatch => ({
+    gotoTrip: ({ ...data }) =>
+      dispatch(pushToTrip({ data })),
+  })),
   withHandlers({
     onSubmit: ({
       createTrip, WandererId, start, end,
@@ -78,12 +82,10 @@ export default compose(
       start,
       end,
     }),
-    onSubmitSuccess: ({ setSubmitted }) => () => setSubmitted(true),
+    onSubmitSuccess: ({ gotoTrip }) => (trip) => {
+      gotoTrip(trip.data);
+    },
   }),
-  branch(
-    ({ submitted }) => submitted,
-    renderComponent(() => <Flex pt="5.5rem" ><h1>Success!</h1></Flex>),
-  ),
   reduxForm({
     form: 'new-trip',
   }),

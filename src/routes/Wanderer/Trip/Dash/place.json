@@ -1,0 +1,55 @@
+{
+	"address_components": [
+		{
+			"long_name": "New South Wales",
+			"short_name": "NSW",
+			"types": [
+				"administrative_area_level_1",
+				"political"
+			]
+		},
+		{
+			"long_name": "Australia",
+			"short_name": "AU",
+			"types": [
+				"country",
+				"political"
+			]
+		}
+	],
+	"adr_address": "<span class="region">New South Wales</span>, <span class="country-name">Australia</span>",
+	"formatted_address": "New South Wales, Australia",
+	"geometry": {
+		"location": {
+			"lat": -31.2532183,
+			"lng": 146.92109900000003
+		},
+		"viewport": {
+			"south": -37.5052801,
+			"west": 140.9992793,
+			"north": -28.15702,
+			"east": 159.1054441
+		}
+	},
+	"icon": "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+	"id": "e6a10a4a3a0314c74c98164c32fdb5dadf0d0f61",
+	"name": "New South Wales",
+	"photos": [
+		"https://lh3.googleusercontent.com/p/AF1QipOUpD3WwQNi1CJtX7Nu6jwWznAvIdj40gURZ98Y=w1000-k",
+		"https://lh3.googleusercontent.com/p/AF1QipMgcrcXq8aLo3KQqKE90ujYta93w7rAoKH8O1GN=w1000-k",
+		"https://lh3.googleusercontent.com/p/AF1QipM71wS8adkaREyNH2Bfn4FDDuIkpTjNvwtczBjV=w1000-k",
+		"https://lh3.googleusercontent.com/p/AF1QipP6yEif4oIUzBvQYHdXPyUol-mCKK2B2lYNhFbU=w1000-k",
+		"https://lh3.googleusercontent.com/p/AF1QipN6xFQ_OUFFaZCSEZjdugXt12KvjzFHC1kRyz7u=w1000-k",
+		"https://lh3.googleusercontent.com/p/AF1QipPyuojhsqGOyCVz4GwB0Bi4jAh3o7MVdnXn_Dok=w1000-k"
+	],
+	"place_id": "ChIJDUte93TLDWsRLZ_EIhGvgBc",
+	"reference": "CmRbAAAAeytjnTq8mavtIr1ZobhFQzJXumwsJIZI-jF2KHMKvHasPmIkai7SwjRIZTZTnbvPMapVS4cifTQGDwVO2hZBm6XtJoH2APx1sAnEyxhiOycj8NaQZLOCQlFEuwohggKSEhBM5LIIlnX_JFJL9zv8OSHDGhQ3f9ZMrbElBeR3qRSQd2oopl5CzA",
+	"scope": "GOOGLE",
+	"types": [
+		"administrative_area_level_1",
+		"political"
+	],
+	"url": "https://maps.google.com/?q=New+South+Wales,+Australia&ftid=0x6b0dcb74f75e4b0d:0x1780af1122c49f2d",
+	"utc_offset": 660,
+	"html_attributions": []
+}"

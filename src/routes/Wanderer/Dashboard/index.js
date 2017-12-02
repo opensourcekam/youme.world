@@ -1,25 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { Flex, Box } from 'grid-styled';
-import { lifecycle } from 'recompose';
+import { compose } from 'recompose';
 import {
   SideBar,
   ProfileImage,
   ButtonLink,
-  TripCard,
 } from 'feuxworks';
-import styled from 'styled-components';
+import TripCard from '../../../components/TripCard';
 import TEMPIMG from '../../../images/outdoors.jpg';
 import SelfIMG from '../../../images/user.png';
+import withQuery from './query';
 
-const enhance = lifecycle({
-  componentWillMount: () => {
-    fetch('http://youme-data-youme.b9ad.pro-us-east-1.openshiftapps.com/graphql?query=%7B%0A%20%20wanderers%20%7B%0A%20%20%20%20id%0A%20%20%7D%0A%7D&variables=null', {})
-      .then(data => data.json())
-      .then(console.log)
-      .catch(err => console.error(err));
-  },
-
-});
+const enhance = connect(state => ({
+  WandererId: state.auth.WandererId,
+  ...state,
+}));
 
 const CallToAction = styled(ButtonLink)`
 	background-color: ${({ color }) => color || '#0ef776'};
@@ -30,13 +27,13 @@ const CallToAction = styled(ButtonLink)`
 `;
 
 const InfoText = styled.p`
-margin-bottom: 2.5rem;
-text-transform: lowercase;
-font-family: 'Pacifico', cursive;
+	margin-bottom: 3rem;
+	text-transform: lowercase;
+	font-family: 'Rustico', cursive;
 `;
 
-const WandererDash = ({ data }) => (
-  <Flex>
+const WandererDash = ({ trips = [{}, {}], loading }) => console.log(trips) ||
+  (<Flex>
     <SideBar>
       <ProfileImage src={SelfIMG} alt="profile" />
       <p className="h5 xh2 bold">“White space is to be regarded as an active element, not a passive background.”</p>
@@ -44,6 +41,7 @@ const WandererDash = ({ data }) => (
     <Flex
       wrap
       mt="4rem"
+      flex="1 1 100%"
       ml="1rem"
       mr="1rem"
       justify="space-around"
@@ -57,23 +55,24 @@ const WandererDash = ({ data }) => (
       </Flex>
       <Box w={[1, 1, 1, 2 / 3]}>
         <InfoText className="h2 bold">Upcoming trips</InfoText>
-        <TripCard data={{
-					to: '#smoney',
-					locationName: 'Lyon, France',
-					backgroundImg: TEMPIMG,
-					cheapestFlight: '437',
-					currencySymbol: '$',
-				}}
-        />
+        {!loading && (trips.slice(0).reverse()).map(trip => (
+          <TripCard data={{
+							to: `/wanderer/trip/${trip.id}`,
+							locationName: trip.country,
+							backgroundImg: trip.photos.length && JSON.parse(trip.photos)[0],
+							cheapestFlight: '437',
+							currencySymbol: '$',
+							...trip,
+						}}
+          />
+			 ))}
       </Box>
       <Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
         <InfoText className="h2 bold">Dream Trips</InfoText>
         <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
-        {/* <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} /> */}
-        {/* <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} /> */}
       </Box>
     </Flex>
   </Flex>
-);
+  );
 
-export default enhance(WandererDash);
+export default enhance(withQuery(WandererDash));

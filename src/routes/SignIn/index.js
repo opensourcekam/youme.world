@@ -13,7 +13,8 @@ const enhance = compose(connect(state => ({
 }), dispatch => ({
   doTheSignin: ({ email, password, ...rest }) =>
     dispatch(signin({ email, password, rest })),
-})));
+}) 
+));
 
 const Container = styled.main`
 	display: flex;
