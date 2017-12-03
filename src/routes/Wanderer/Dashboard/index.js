@@ -9,6 +9,7 @@ import {
   ButtonLink,
 } from 'feuxworks';
 import TripCard from '../../../components/TripCard';
+import InfoText from '../../../components/InfoText';
 import TEMPIMG from '../../../images/outdoors.jpg';
 import SelfIMG from '../../../images/user.png';
 import withQuery from './query';
@@ -24,12 +25,6 @@ const CallToAction = styled(ButtonLink)`
 	font-size: 1.5rem;
 	margin-right: 1rem;
 	margin-bottom: 1rem;
-`;
-
-const InfoText = styled.p`
-	margin-bottom: 3rem;
-	text-transform: lowercase;
-	font-family: 'Rustico', cursive;
 `;
 
 const WandererDash = ({ trips = [{}, {}], loading }) => console.log(trips) ||
@@ -53,8 +48,8 @@ const WandererDash = ({ trips = [{}, {}], loading }) => console.log(trips) ||
         </Box>
         <Box />
       </Flex>
-      <Box w={[1, 1, 1, 2 / 3]}>
-        <InfoText className="h2 bold">Upcoming trips</InfoText>
+      <Box w={[1, 1, 1, 1 / 3]}>
+        <InfoText>Upcoming trips</InfoText>
         {!loading && (trips.slice(0).reverse()).map(trip => (
           <TripCard data={{
 							to: `/wanderer/trip/${trip.id}`,
@@ -67,10 +62,10 @@ const WandererDash = ({ trips = [{}, {}], loading }) => console.log(trips) ||
           />
 			 ))}
       </Box>
-      <Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
+      {/* <Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
         <InfoText className="h2 bold">Dream Trips</InfoText>
         <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
-      </Box>
+      </Box> */}
     </Flex>
   </Flex>
   );

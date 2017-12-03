@@ -8,7 +8,6 @@ import {
   Footer,
   ResponsiveNav,
   CTAButton,
-  SignoutButton,
 } from 'feuxworks';
 
 const footerAboutLinks = [

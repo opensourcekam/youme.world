@@ -63,6 +63,7 @@ export default compose(
     const WandererId = get(state.auth, 'WandererId');
     const placeData = get(state.form['new-trip'], 'values.place');
     const data = (typeof placeData === 'string') ? JSON.parse(placeData) : {};
+
     return ({
       formattedAddress: data.formatted_address,
       WandererId,
@@ -75,12 +76,10 @@ export default compose(
   })),
   withHandlers({
     onSubmit: ({
-      createTrip, WandererId, start, end,
-    }) => values => createTrip({
+      createTrip, WandererId,
+    }) => values => console.log(values) || createTrip({
       ...values,
       WandererId,
-      start,
-      end,
     }),
     onSubmitSuccess: ({ gotoTrip }) => (trip) => {
       gotoTrip(trip.data);

@@ -1,6 +1,4 @@
 /* global localStorage */
-import moment from 'moment';
-
 import { CREATE_TRIP } from '../types';
 
 const initialState = {

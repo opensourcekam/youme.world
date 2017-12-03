@@ -3,7 +3,7 @@ import createHistory from 'history/createBrowserHistory';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import { routerReducer, routerMiddleware as routerMiddle } from 'react-router-redux';
-import { authReducer, tripReducer } from './reducers';
+import { authReducer, tripReducer, todoReducer } from './reducers';
 // import { createLogger } from 'redux-logger';
 
 export const history = createHistory();
@@ -12,7 +12,8 @@ const app = combineReducers({
   form: formReducer,
   router: routerReducer,
   auth: authReducer,
-  trip: tripReducer,
+	trip: tripReducer,
+	todos: todoReducer,
 });
 
 const createStoreWithMiddleware = applyMiddleware(

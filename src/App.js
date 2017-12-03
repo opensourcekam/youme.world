@@ -1,5 +1,7 @@
 /* global localStorage */
 import React from 'react';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { ThemeProvider } from 'styled-components';
@@ -18,6 +20,7 @@ import WandererDash from './routes/Wanderer/Dashboard';
 import WandererInspiration from './routes/Wanderer/Inspiration';
 import NewTripForm from './routes/Wanderer/Trip/Form';
 import TripDash from './routes/Wanderer/Trip/Dash';
+import ScrollToTop from './components/ScrollToTop';
 
 /** REDUX */
 import configureStore, { history } from './redux/configureStore';
@@ -40,21 +43,22 @@ const App = () => (
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Layout>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/signin" component={SignIn} />
-              <Route exact path="/signout" component={SignOut} />
+            <ScrollToTop>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/signin" component={SignIn} />
+                <Route exact path="/signout" component={SignOut} />
 
-              <Route exact path="/wanderer/welcome" component={checkAuth(FirstTimeForm)} />
-              <Route exact path="/wanderer/dash" component={checkAuth(WandererDash)} />
-              <Route exact path="/wanderer/new/trip" component={checkAuth(NewTripForm)} />
-              <Route exact path="/wanderer/inspiration" component={checkAuth(WandererInspiration)} />
-              <Route exact path="/wanderer/trip/:tripId" component={checkAuth(TripDash)} />
+                <Route exact path="/wanderer/welcome" component={checkAuth(FirstTimeForm)} />
+                <Route exact path="/wanderer/dash" component={checkAuth(WandererDash)} />
+                <Route exact path="/wanderer/new/trip" component={checkAuth(NewTripForm)} />
+                <Route exact path="/wanderer/inspiration" component={checkAuth(WandererInspiration)} />
+                <Route exact path="/wanderer/trip/:tripId" component={checkAuth(TripDash)} />
 
-
-              <Route exact component={Notfound} />
-            </Switch>
+                <Route exact component={Notfound} />
+              </Switch>
+            </ScrollToTop>
           </Layout>
         </ConnectedRouter>
       </Provider>

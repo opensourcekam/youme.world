@@ -4,6 +4,8 @@ import {
 } from 'feuxworks';
 import styled from 'styled-components';
 import { Flex } from 'grid-styled';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import { verticalline } from '../../css';
 
 const H2 = styled.h2`
@@ -28,17 +30,20 @@ const Centered = styled(Flex).attrs({
 const H3 = styled.h3`
 	font-weight: 300;
 `;
+const enhance = compose(connect(state => ({
+  authenticated: state.auth,
+}), null));
 
-const Home = () =>
+const Home = ({ authenticated }) =>
   (
     <main>
       <HomeLead
         banner="#123093 url(https://images.unsplash.com/photo-1488628278511-2177a435414d?dpr=1&auto=compress,format&fit=crop&w=2851&h=&q=80&cs=tinysrgb&crop=)"
-        header="youme.plan"
-        lead="Your friends. Your experiences. Your life."
+        header="youme.🌍"
+        lead=""
         button={{
 				text: 'Have an adventure',
-				link: '/signup',
+				link: (authenticated) ? '/wanderer/dash' : '/signup',
 			}}
       />
       <Centered
@@ -65,4 +70,4 @@ const Home = () =>
     </main>
   );
 
-export default Home;
+export default enhance(Home);

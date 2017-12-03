@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const PlaceName = styled.h1`
 	position: absolute;
 	font-family: 'Rustico', cursive;
-	font-size: 240%;
+	font-size: 220%;
 	top: 4.5rem;
 
   left: 0; 

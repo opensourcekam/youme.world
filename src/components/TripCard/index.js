@@ -25,30 +25,6 @@ const TripCard = ({
   data,
 }) => (
   <Trip to={data.to}>
-    {/* <TopBar>
-       <Flex
-        flex="1 1 auto"
-        wrap
-        align="center"
-        justify="space-between"
-        mt=".5rem"
-        mb=".5rem"
-      >
-        <LocationName>{data.locationName}</LocationName>
-        <RightWrap>
-          <Box mr=".5rem">
-            <Icon name="plane" size="2rem" fill="#0ef776" />
-          </Box>
-          <h3>{data.currencySymbol}{data.cheapestFlight}</h3>
-        </RightWrap>
-      </Flex>
-			</TopBar>
-			<Image src={data.backgroundImg} alt="city x" />
-
-		*/}
-    {/* <CenteredTextOverImage src={data.backgroundImg}>
-      <LongName>{data.locationName}</LongName>
-    </CenteredTextOverImage> */}
     <ImagePalette image={data.backgroundImg} crossOrigin="Anonymous">
       {({ backgroundColor, color, alternativeColor }) => (
         <CenteredTextOverImage

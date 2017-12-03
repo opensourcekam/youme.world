@@ -13,8 +13,7 @@ const enhance = compose(connect(state => ({
 }), dispatch => ({
   doTheSignin: ({ email, password, ...rest }) =>
     dispatch(signin({ email, password, rest })),
-}) 
-));
+})));
 
 const Container = styled.main`
 	display: flex;
@@ -42,11 +41,17 @@ const Error = styled.span`
 	color: red;
 `;
 
+const Form = styled(SigninForm)`
+	input {
+		color: white;		
+	}
+`;
+
 const SignIn = ({ doTheSignin, errorText }) => (
   <Container>
     <Fade up delay={800}>
       <Wrapper>
-        <SigninForm onSubmit={values => doTheSignin(values)} />
+        <Form onSubmit={values => doTheSignin(values)} />
         <Error>{errorText}</Error>
       </Wrapper>
     </Fade>
