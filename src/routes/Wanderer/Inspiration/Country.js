@@ -42,7 +42,7 @@ const CountryInspiration = props => (
 				Hey thanks for being a part of this community!
       </h3>
       <h4	color="#3A3A3A" style={{ fontWeight: '300' }}>
-			As we gather more data about this {props.match.params.country} from your adventures we will be able to generate new inspirationl content, and trips for you! Help us help wanderers and submit lots of trip data!
+			As we gather more data about this {props.match.params.country} from your adventures we will be able to generate new inspirational content, and trips for you! Help us help wanderers and submit lots of trip data!
       </h4>
     </Box>
   </ContentWrap>

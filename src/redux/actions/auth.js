@@ -36,7 +36,7 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
         if (token) {
           dispatch(authUser(id));
           dispatch(saveToken(token));
-          dispatch(push('/wanderer/welcome'));
+          dispatch(push('/wanderer/new/trip'));
         }
       }
     })

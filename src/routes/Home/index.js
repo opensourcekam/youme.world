@@ -54,7 +54,7 @@ const Home = ({ authenticated }) =>
   (
     <main>
       <StyledHomeLead
-        banner="#3A3A3A url(https://images.unsplash.com/photo-1505205296326-2178af1b47bf?auto=format&fit=crop&w=1000) no-repeat fixed center"
+        banner="#3A3A3A url(https://images.unsplash.com/photo-1505205296326-2178af1b47bf?auto=format&fit=crop&w=2000) no-repeat 100% center"
         header="youmeworld"
         lead="Travel with a purpose."
         button={{
@@ -65,7 +65,7 @@ const Home = ({ authenticated }) =>
       <Centered>
         <H2>How it works</H2>
         <StyledHomeLeadBlack
-          banner="#3A3A3A url(https://images.unsplash.com/photo-1508881070183-8db4c3937880?auto=format&fit=crop&w=1000) no-repeat fixed center"
+          banner="#3A3A3A url(https://images.unsplash.com/photo-1508881070183-8db4c3937880?auto=format&fit=crop&w=2000) no-repeat fixed center"
           header="Blogger driven"
           lead='Our trip plans are driven by you the "wanderer", make a new account to get started!'
           button={{
@@ -76,7 +76,7 @@ const Home = ({ authenticated }) =>
         <H2>Focus on experience</H2>
         <Centered>
           <StyledHomeLead
-            banner="#3A3A3A url(https://images.unsplash.com/photo-1504886985223-7b2cad64c3ca?auto=format&fit=crop&w=1000) no-repeat fixed center"
+            banner="#3A3A3A url(https://images.unsplash.com/photo-1504886985223-7b2cad64c3ca?auto=format&fit=crop&w=2000) no-repeat fixed center"
             header="We've got your back"
             lead="Sit back relax, and yeah bring youme so you don't forget the best spots."
             button={{
@@ -89,7 +89,7 @@ const Home = ({ authenticated }) =>
         <H2>Be a planner</H2>
         <Centered>
           <StyledHomeLead
-            banner="#3A3A3A url(https://images.unsplash.com/photo-1490723412895-f49eb0a9ce0a?auto=format&fit=crop&w=1000) no-repeat fixed center"
+            banner="#3A3A3A url(https://images.unsplash.com/photo-1490723412895-f49eb0a9ce0a?auto=format&fit=crop&w=2000) no-repeat fixed center"
             header="This could be your job"
             lead="Our blogging engine formulates blog post that you could get paid for!"
             button={{
