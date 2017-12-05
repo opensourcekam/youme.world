@@ -14,7 +14,7 @@
     "axios": "^0.17.1",
     "emoji-from-text": "^1.1.8",
     "express": "^4.16.2",
-    "feuxworks": "1.0.38",
+    "feuxworks": "1.0.39",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
     "grid-styled": "^2.0.0-11",

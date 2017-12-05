@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.3e6935aa.css",
   "main.css.map": "static/css/main.3e6935aa.css.map",
-  "main.js": "static/js/main.27533324.js",
-  "main.js.map": "static/js/main.27533324.js.map",
+  "main.js": "static/js/main.c9ca0f2d.js",
+  "main.js.map": "static/js/main.c9ca0f2d.js.map",
   "static/media/Bloomfield_W_Bd.eot": "static/media/Bloomfield_W_Bd.16a19475.eot",
   "static/media/Bloomfield_W_Bd.woff": "static/media/Bloomfield_W_Bd.e446a1ad.woff",
   "static/media/Bloomfield_W_Blk.eot": "static/media/Bloomfield_W_Blk.559dca3f.eot",
@@ -14,6 +14,7 @@
   "static/media/Kust.ttf": "static/media/Kust.eca854f0.ttf",
   "static/media/Kust.woff": "static/media/Kust.183f10c0.woff",
   "static/media/Rustico.otf": "static/media/Rustico.5252e764.otf",
+  "static/media/cave.jpg": "static/media/cave.73dd42fe.jpg",
   "static/media/check.svg": "static/media/check.36d55b7c.svg",
   "static/media/planningOnMap.jpg": "static/media/planningOnMap.c995ae9d.jpg",
   "static/media/wierdLoader.webp": "static/media/wierdLoader.593a5459.webp"

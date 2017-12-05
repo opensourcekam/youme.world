@@ -14,7 +14,7 @@ import './css/font.css';
 import './App.css';
 
 /** ROUTES */
-import { Home, Notfound, SignUp, SignIn, SignOut } from './routes';
+import { Home, Notfound, SignUp, SignIn, SignOut, ClosedSignUp } from './routes';
 import FirstTimeForm from './routes/Wanderer/FirstTimeUserForm';
 import WandererDash from './routes/Wanderer/Dashboard';
 import WandererInspiration from './routes/Wanderer/Inspiration';
@@ -47,7 +47,8 @@ const App = () => (
             <ScrollToTop>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/signup" component={ClosedSignUp} />
+                {/* <Route exact path="/signup" component={SignUp} /> */}
                 <Route exact path="/signin" component={SignIn} />
                 <Route exact path="/signout" component={SignOut} />
 

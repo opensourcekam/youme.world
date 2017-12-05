@@ -33,6 +33,7 @@ const Layout = ({ children, auth, ...props }) => {
     { to: '/signout', text: 'Signout', component: SignoutButton },
   ] : [
     { to: '/signin', text: 'Lets Wander', component: CTAButton },
+    { to: 'http://youme.world', text: 'Get invited', component: CTAButton },
   ];
 
   const navLinks = [
