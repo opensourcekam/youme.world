@@ -6,6 +6,7 @@ const FetchTrip = gql`
 	query tripsByWandererId($tripId: ID!) {
 		trip: tripById(tripId: $tripId) {
 			WandererId
+			tripId
 			title
 			budget
 			status

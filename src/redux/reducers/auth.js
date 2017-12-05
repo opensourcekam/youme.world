@@ -19,7 +19,6 @@ export default (state = {
       };
     case UNAUTH_USER:
       window.localStorage.clear();
-      console.log(localStorage);
       return {
         ...state,
         authenticated: false,

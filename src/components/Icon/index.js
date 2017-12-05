@@ -24,6 +24,7 @@ const Icon = (props) => {
       height={props.size}
       width={props.size}
       stroke={props.stroke}
+      fill={props.fill}
       strokeWidth={props.strokeWidth}
       viewBox={props.viewBox || iconViewBox}
     >
@@ -55,5 +56,5 @@ Icon.defaultProps = {
 };
 
 export default styled(Icon)`
-	fill: #eee;
+	fill: ${({ fill }) => fill || '#eee'};
 `;

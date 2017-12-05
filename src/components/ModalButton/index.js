@@ -1,12 +1,16 @@
 import React from 'react';
 import { element, node, bool, func, string } from 'prop-types';
 import { withState, compose } from 'recompose';
-import { Button } from 'feuxworks';
+import { Button as Btn } from 'feuxworks';
 import styled from 'styled-components';
 import Modal from '../Modal';
 
 const Wrapper = styled.div`
 	display: inline-block;
+`;
+
+const Button = Btn.extend`
+	background-color: rgba(0,255,0,.7)
 `;
 
 const enhance = compose(withState('isOpen', 'closeModal', false));
