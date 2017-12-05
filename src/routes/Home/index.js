@@ -6,11 +6,9 @@ import styled from 'styled-components';
 import { Flex } from 'grid-styled';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
-import { verticalline } from '../../css';
+// import { verticalline } from '../../css';
 
 const H2 = styled.h2`
-	 ${verticalline}
-	 margin-bottom: 4.5em;
 	 color: #3D3E40;
 `;
 
@@ -30,6 +28,24 @@ const Centered = styled(Flex).attrs({
 const H3 = styled.h3`
 	font-weight: 300;
 `;
+const StyledHomeLead = styled(HomeLead)`
+	h1 {
+		margin: 0;
+	}
+	h2 {
+		font-size: 3vw;
+	}
+`;
+const StyledHomeLeadBlack = styled(HomeLead)`
+h1 {
+	color: #3A3A3A;
+	margin: 0;
+}
+h2 {
+	font-size: 3vw;
+}
+
+`;
 const enhance = compose(connect(state => ({
   authenticated: state.auth,
 }), null));
@@ -37,33 +53,50 @@ const enhance = compose(connect(state => ({
 const Home = ({ authenticated }) =>
   (
     <main>
-      <HomeLead
-        banner="#123093 url(https://images.unsplash.com/photo-1488628278511-2177a435414d?dpr=1&auto=compress,format&fit=crop&w=2851&h=&q=80&cs=tinysrgb&crop=)"
-        header="youme.🌍"
-        lead=""
+      <StyledHomeLead
+        banner="#3A3A3A url(https://images.unsplash.com/photo-1505205296326-2178af1b47bf?auto=format&fit=crop&w=1000) no-repeat fixed center"
+        header="youmeworld"
+        lead="Travel with a purpose."
         button={{
 				text: 'Have an adventure',
 				link: (authenticated) ? '/wanderer/dash' : '/signup',
 			}}
       />
-      <Centered
-        p={['3rem', '15rem']}
-      >
+      <Centered>
         <H2>How it works</H2>
-        <Centered>
-          <H3>This version of youme.world is designed to help you find things to do in your dream destinations!</H3>
-        </Centered>
-
+        <StyledHomeLeadBlack
+          banner="#3A3A3A url(https://images.unsplash.com/photo-1508881070183-8db4c3937880?auto=format&fit=crop&w=1000) no-repeat fixed center"
+          header="Blogger driven"
+          lead='Our trip plans are driven by you the "wanderer", make a new account to get started!'
+          button={{
+				text: 'Lets Wander',
+				link: (authenticated) ? '/wanderer/dash' : '/signup',
+				}}
+        />
         <H2>Focus on experience</H2>
         <Centered>
-          <ImageCta src="//unsplash.it/300/?random" />
-          <H3>We develped youme.plan so you can enjoy each and every day of your travels without simultaneously needing to plan ever moment. We've got that covered for you! Better yet you can have a local help you plan your day and maybe even be your personal tour guide!</H3>
+          <StyledHomeLead
+            banner="#3A3A3A url(https://images.unsplash.com/photo-1504886985223-7b2cad64c3ca?auto=format&fit=crop&w=1000) no-repeat fixed center"
+            header="We've got your back"
+            lead="Sit back relax, and yeah bring youme so you don't forget the best spots."
+            button={{
+						text: 'Wander worry free',
+						link: (authenticated) ? '/wanderer/dash' : '/signup',
+						}}
+          />
         </Centered>
 
         <H2>Be a planner</H2>
         <Centered>
-          <ImageCta src="//unsplash.it/310/?random" />
-          <H3>You can generate income by becoming a planner or host in the city you can be a bomb ass host in! It's simple tell us a bit about you and we will match you with a visitor who needs your help to have the time of their life!</H3>
+          <StyledHomeLead
+            banner="#3A3A3A url(https://images.unsplash.com/photo-1490723412895-f49eb0a9ce0a?auto=format&fit=crop&w=1000) no-repeat fixed center"
+            header="This could be your job"
+            lead="Our blogging engine formulates blog post that you could get paid for!"
+            button={{
+						text: 'Be a wanderer',
+						link: (authenticated) ? '/wanderer/dash' : '/signup',
+						}}
+          />
         </Centered>
 
       </Centered>

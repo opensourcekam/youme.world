@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { Flex, Box } from 'grid-styled';
 import ImagePalette from 'react-image-palette';
+import { Map, Loader } from 'feuxworks';
 import withQuery from './query';
 import LongName from '../../../../components/LongName';
 import CenteredTextOverImage from '../../../../components/CenteredTextOverImage';
@@ -14,17 +15,22 @@ import SaveForTrip from '../../../../components/SaveForTrip';
 import ModalButton from '../../../../components/ModalButton';
 import DayPlan from '../../../../components/DayPlan';
 import TravelStyle from '../../../../components/TravelStyle';
-import ScrollFlex from '../../../../components/ScrollFlex';
+import Collapsable from '../../../../components/Collapsable';
+import SwipeSlider from '../../../../components/SwipeSlider';
 import { getDayPlan, hasDayPlanner } from '../../../../redux/actions/tripiso';
+import spinnerDuringLoading from '../../../../hocs/spinnerWhileLoading';
 
-const enhance = compose(connect((state => ({
-  title: state.trip.title,
-  budget: state.trip.budget,
-  planner: state.tripiso,
-})), dispatch => ({
-  getPlan: dispatch(getDayPlan),
-  hasPlan: dispatch(hasDayPlanner),
-})));
+const enhance = compose(
+  spinnerDuringLoading,
+  connect((state => ({
+    title: state.trip.title,
+    budget: state.trip.budget,
+    planner: state.tripiso,
+  })), dispatch => ({
+    getPlan: dispatch(getDayPlan),
+    hasPlan: dispatch(hasDayPlanner),
+  })),
+);
 
 const LocationText = styled(LongName)`
 	color: ${({ color }) => color}
@@ -41,8 +47,13 @@ const CallToFocus = styled.h2`
 	margin-bottom: 0;
 	color: rgba(0, 0, 0, .6);
 `;
-const PhotoScroll = styled(ScrollFlex)`
-	padding: 1rem 0;
+const MapContainer = styled.div`
+	position: relative;
+	left: 0rem;
+
+	width: 100%;
+	height: 18rem;
+	background-color: #fff;
 `;
 
 const TripDash = ({
@@ -59,18 +70,18 @@ const TripDash = ({
             alternativeColor={alternativeColor}
             src={JSON.parse(trip.photos)[0]}
           >
-            <LocationText	color={color}>{trip.longName}</LocationText>
+            <LocationText	color="#fff">{trip.longName}</LocationText>
           </CenteredTextOverImage>
 				)}
       </ImagePalette>}
 
-      <PhotoScroll>
+      <SwipeSlider>
         {JSON.parse(trip.photos).reverse().map(src => (
           <Box>
             <img style={{ maxHeight: '300px' }} src={src} alt={trip.longName} />
           </Box>
 				))}
-      </PhotoScroll>
+      </SwipeSlider>
       <ThePlans>
         <Box px="2rem" id="box">
           <Flex column justify="center" align="center">
@@ -85,7 +96,17 @@ const TripDash = ({
 
           <Flex column>
             <PlannerItem>
-              <CallToFocus>Itinerary</CallToFocus>
+              <CallToFocus>Map</CallToFocus>
+              <MapContainer>
+                <Map
+                  center={trip.coordinates}
+                  zoom={10}
+                />
+              </MapContainer>
+            </PlannerItem>
+
+            <PlannerItem>
+              <CallToFocus>Blogger Generated Itinerary</CallToFocus>
               <DayPlan
                 getPlan={getPlan}
                 hasPlan={hasPlan}
@@ -96,20 +117,22 @@ const TripDash = ({
                 tripId={trip.tripId}
               />
             </PlannerItem>
-            <PlannerItem>
-              <CallToFocus>Map</CallToFocus>
-            </PlannerItem>
-            <PlannerItem>
-              <CallToFocus>Saving Money</CallToFocus>
-              <ModalButton InnerModal={<SaveForTrip />}>help me save</ModalButton>
-            </PlannerItem>
-            <PlannerItem>
-              <CallToFocus>Before you go!</CallToFocus>
-              <TodoList />
-            </PlannerItem>
+
             <PlannerItem>
               <CallToFocus>Travel style</CallToFocus>
               <TravelStyle />
+            </PlannerItem>
+
+            <PlannerItem>
+              <CallToFocus>Checklist</CallToFocus>
+              <TodoList />
+            </PlannerItem>
+
+            <PlannerItem>
+              <CallToFocus>Saving Money</CallToFocus>
+              <Collapsable>
+                <ModalButton InnerModal={<SaveForTrip />}>help me save</ModalButton>
+              </Collapsable>
             </PlannerItem>
           </Flex>
         </Box>

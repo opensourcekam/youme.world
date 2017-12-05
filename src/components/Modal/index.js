@@ -27,7 +27,7 @@ const Wrapper = Card.extend`
 `;
 
 const ChildrenWrapper = styled.div`
-	padding: 6rem;
+	padding: 2rem 1rem;
 `;
 
 const CloseButton = Button.extend`

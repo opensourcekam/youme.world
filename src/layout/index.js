@@ -1,14 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { node, bool } from 'prop-types';
-
+import styled from 'styled-components';
 import {
   ContentContainer,
   Foundation,
   Footer,
   ResponsiveNav,
   CTAButton,
+  Button,
 } from 'feuxworks';
+
+const SignoutButton = styled(Button)`
+	background: #FF2640;
+	color: #fff;
+`;
+const InspiredButton = styled(Button)`
+	background: #00FFFF;
+`;
 
 const footerAboutLinks = [
   { to: '/who_are_we', text: 'Who are we?' },
@@ -19,15 +28,14 @@ const footerAboutLinks = [
 
 const Layout = ({ children, auth, ...props }) => {
   const buttonLink = (auth.authenticated) ? [
-    { to: '/wanderer/dash', text: 'My Trips', component: CTAButton },
-    { to: '/signout', text: 'Signout', component: CTAButton },
+    { to: '/wanderer/dash', text: 'Lets Wander', component: Button },
+    { to: '/inspiration', text: 'Inspiration', component: InspiredButton },
+    { to: '/signout', text: 'Signout', component: SignoutButton },
   ] : [
-    { to: '/signin', text: 'Do something', component: CTAButton },
+    { to: '/signin', text: 'Lets Wander', component: CTAButton },
   ];
 
-  const navLinks = [{ to: '/faq', text: 'FAQ' },
-    { to: '/inspiration_all_around_us', text: 'Get inspired' },
-    { to: '/refer', text: 'Refer a friend' },
+  const navLinks = [
     ...buttonLink,
   ];
 
@@ -39,7 +47,6 @@ const Layout = ({ children, auth, ...props }) => {
       </ContentContainer>
       <Footer
         aboutLinks={footerAboutLinks}
-        footerColor="linear-gradient(to left, #b2fefa, #0ed2f7)"
         appName="youme.world"
       />
     </Foundation>

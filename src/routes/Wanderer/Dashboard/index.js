@@ -10,14 +10,17 @@ import {
 } from 'feuxworks';
 import TripCard from '../../../components/TripCard';
 import InfoText from '../../../components/InfoText';
-import TEMPIMG from '../../../images/outdoors.jpg';
+import spinnerDuringLoading from '../../../hocs/spinnerWhileLoading';
 import SelfIMG from '../../../images/user.png';
 import withQuery from './query';
 
-const enhance = connect(state => ({
-  WandererId: state.auth.WandererId,
-  ...state,
-}));
+const enhance = compose(
+  spinnerDuringLoading,
+  connect(state => ({
+    WandererId: state.auth.WandererId,
+    ...state,
+  })),
+);
 
 const CallToAction = styled(ButtonLink)`
 	background-color: ${({ color }) => color || '#0ef776'};
@@ -27,7 +30,7 @@ const CallToAction = styled(ButtonLink)`
 	margin-bottom: 1rem;
 `;
 
-const WandererDash = ({ trips = [{}, {}], loading }) => console.log(trips) ||
+const WandererDash = ({ trips = [{}, {}], loading }) =>
   (<Flex>
     <SideBar>
       <ProfileImage src={SelfIMG} alt="profile" />
@@ -44,7 +47,7 @@ const WandererDash = ({ trips = [{}, {}], loading }) => console.log(trips) ||
       <Flex flex="1 1 100%" wrap justify="space-between" mt="1.5rem">
         <Box>
           <CallToAction to="/wanderer/new/trip">New Trip</CallToAction>
-          <CallToAction color="#0ed2f7" to="/wanderer/inspiration">Get Inspired</CallToAction>
+          <CallToAction to="/inspiration">Get Inspired</CallToAction>
         </Box>
         <Box />
       </Flex>

@@ -10,21 +10,21 @@ import Icon from '../Icon';
 
 const closedStyle = css`
 	border-bottom: solid;
-	border-color: rgba(33,33,33,.6);
+	border-color: #3A3A3A;
 `;
 const openStyle = css`
 	border-bottom: solid;
-	border-color: rgba(0,255,100, .7);
+	border-color: #1CFF54;
 `;
 const upCaret = css`
 	transform: rotate(-45deg);
-	fill: rgba(33,33,33,.6);
-	stroke: rgba(33,33,33,.6);
+	fill: #3A3A3A;
+	stroke: #3A3A3A;
 `;
 const downCaret = css`
 	transform: rotate(180deg);
-	fill: rgba(0,255,100, .7);
-	stroke: rgba(0,255,100, .7);
+	fill: #1CFF54;
+	stroke: #1CFF54;
 `;
 
 const Button = styled(Btn)`
@@ -61,8 +61,8 @@ const Collapsable = ({
           />
           <Caret
             name="caretDown"
-            stroke="rgba(33,33,33,.6)"
-            fill="rgba(33,33,33,.6)"
+            stroke="#3A3A3A"
+            fill="#3A3A3A"
             isOpened={collapsed}
           />
         </Flex>

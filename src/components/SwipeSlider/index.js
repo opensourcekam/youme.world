@@ -9,17 +9,19 @@ const StyledSlider = styled(Slider)`
 	}
 `;
 
-const settings = {
-  className: 'center',
-  infinite: true,
-  swipeToSlide: true,
-};
-
-const SwipeSlider = ({ children }) => (
-  <StyledSlider {...settings}>
+const SwipeSlider = ({ settings, children, ...props }) => (
+  <StyledSlider {...props} {...settings}>
     {children}
   </StyledSlider>
 );
+
+SwipeSlider.defaultProps = {
+  settings: {
+    className: 'center',
+    infinite: true,
+    swipeToSlide: true,
+  },
+};
 
 export default SwipeSlider;
 

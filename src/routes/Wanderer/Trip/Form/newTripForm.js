@@ -21,7 +21,7 @@ const NewTripForm = ({
   submitting, formattedAddress,
 }) => (
   <form onSubmit={handleSubmit}>
-    <Flex flex="1 1 100%" column pt="5.5rem" m={['1rem', '5rem']} mt="0rem" mb="0rem">
+    <Flex flex="1 1 100%" column py="4rem" m={['1rem', '5rem']}>
       <Box ml="1rem">
         <Typist cursor={{ show: false }}>
           <h1>
@@ -35,14 +35,14 @@ const NewTripForm = ({
         <MapCard
           name="location"
           placeholder="Where to next?"
-          zoom={12}
+          zoom={8}
         />
       </Box>
       <Box>
         <CalendarCard />
       </Box>
       <Button type="submit" disabled={pristine || submitting}>
-						Trip view
+				Go on a Trip!
       </Button>
     </Flex>
   </form>

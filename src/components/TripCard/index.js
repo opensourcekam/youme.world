@@ -33,7 +33,7 @@ const TripCard = ({
           color={color}
           alternativeColor={alternativeColor}
         >
-          <LocationText	color={color}>{data.locationName}</LocationText>
+          <LocationText>{data.locationName}</LocationText>
         </CenteredTextOverImage>
 			)}
     </ImagePalette>

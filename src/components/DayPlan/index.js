@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { withState, compose, lifecycle, withHandlers } from 'recompose';
-import { Flex, Box } from 'grid-styled';
+import { Map } from 'feuxworks';
+import { compose, lifecycle } from 'recompose';
+import { Box } from 'grid-styled';
 import moment from 'moment';
 import styled from 'styled-components';
-import tempImage from '../../images/outdoors.jpg';
 import SwipeSlider from '../SwipeSlider';
 import Collapsable from '../Collapsable';
 
@@ -30,9 +30,17 @@ const enhance = compose(lifecycle({
   },
 }));
 
-const DayNumber = styled.h2``;
 const POIImage = styled.img`
 	max-height: 300px;
+`;
+
+const MapContainer = styled.div`
+position: relative;
+left: 0rem;
+
+width: 100%;
+height: 18rem;
+background-color: #fff;
 `;
 
 // CHANGE IMAGES BACT TO THIS DURING DEMO RECORDING
@@ -52,10 +60,15 @@ const DayPlan = ({
                 </Box>
                 <SwipeSlider>
                   {item.poi.images.map(image => (
-										// image.sizes.medium.url
-                    <POIImage src={tempImage} alt={item.title + item.description} />
+                    <POIImage src={image.sizes.medium.url} alt={item.title + item.description} />
 								))}
                 </SwipeSlider>
+                <MapContainer>
+                  <Map
+                    center={{ lat: item.poi.coordinates.latitude, lng: item.poi.coordinates.longitude }}
+                    zoom={15}
+                  />
+                </MapContainer>
               </Collapsable>
             </div>
 				))}

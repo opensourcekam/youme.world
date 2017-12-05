@@ -1,65 +1,64 @@
 import React from 'react';
 import { Flex, Box } from 'grid-styled';
-import {
-  Banner,
-} from 'feuxworks';
 import emojiFromText from 'emoji-from-text';
 import styled from 'styled-components';
 import InfoText from '../../../components/InfoText';
+import TripCard from '../../../components/TripCard';
 
 const getFlag = country => (emojiFromText(country)
   .filter(item => item.match.emoji.category === 'flags'))[0] || { match: { emoji: { char: '' } } };
 const places = [
   {
     country: 'Spain',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'Japan',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'Thailand',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'Mexico',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'Indonesia',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'Peru',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'South America',
+    image: 'https://picsum.photos/',
   },
   {
     country: 'Egypt',
+    image: 'https://picsum.photos/',
   },
 ];
+
 
 const WandererInspiration = ({ data }) => (
   <Flex
     wrap
     mt="4.5rem"
-    flex="1 1 100%"
-    ml="1rem"
-    mr="1rem"
-    justify="space-around"
+    mx="1rem"
   >
     <Box w={[1]}>
       <InfoText>explore countries</InfoText>
-      {places.map(({ country }) => (
-        <Flex
-          px="1rem"
-          mx="0.5rem"
-          py="1rem"
-          my="1rem"
-          w={[1, 1 / 5]}
-          justify="center"
-          align="center"
-        >
-          <p>{country}</p>
-          <p>{getFlag(country).match.emoji.char}</p>
-        </Flex>
+      {places.map((place, i) => (
+        <TripCard data={{
+							to: `/inspiration/${place.country}`,
+							locationName: place.country,
+							backgroundImg: `${place.image}${400 + i}`,
+							...place,
+						}}
+        />
 		))}
     </Box>
   </Flex>
