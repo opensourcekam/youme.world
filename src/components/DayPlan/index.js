@@ -42,13 +42,18 @@ width: 100%;
 height: 18rem;
 background-color: #fff;
 `;
-
+const CallToFocus = styled.h2`
+font-weight: 200;
+margin-bottom: 0;
+color: rgba(0, 0, 0, .6);
+`;
 // CHANGE IMAGES BACT TO THIS DURING DEMO RECORDING
 // image.sizes.thumbnail.url
 const DayPlan = ({
   country, planner,
 }) => (
   <div>
+    {!!planner.days.length && <CallToFocus>Blogger Generated Itinerary</CallToFocus>}
     {planner.days.map((day, i) => (
       <div>
         <Collapsable header={`day ${i + 1}`}>

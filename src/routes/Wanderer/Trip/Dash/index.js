@@ -106,7 +106,7 @@ const TripDash = ({
             </PlannerItem>
 
             <PlannerItem>
-              <CallToFocus>Blogger Generated Itinerary</CallToFocus>
+              
               <DayPlan
                 getPlan={getPlan}
                 hasPlan={hasPlan}
