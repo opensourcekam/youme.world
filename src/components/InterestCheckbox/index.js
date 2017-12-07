@@ -14,8 +14,8 @@ const Label = styled.label`
 	background: url(${({ image }) => image});
 	background-size: cover;
 	background-repeat: no-repeat;
-	width: 250px;
-	height: 250px;
+	width: 120px;
+	height: 120px;
 	border-radius: 5px;
 `;
 
@@ -48,8 +48,8 @@ const Name = styled.span`
 	position: absolute;
 	top: 0;
 	left: 0;
-	font-size: 2rem;
-	color: #3A3A3A;
+	font-size: 1.5rem;
+	color: #FFF;
 	padding: .5rem;	
 `;
 const Check = styled(Icon).attrs({

@@ -34,11 +34,19 @@ query tripsByWandererId($WandererId: ID!) {
 
 export const createTrip = graphql(CreateMutation, {
   props: ({ mutate }) => ({
-    createTrip: input => (
-      mutate({
-        variables: { input },
+    createTrip: (input) => {
+      const newTripInput = {
+        ...input,
+        start: input.dates.startDate,
+        end: input.dates.endDate,
+      };
+      delete newTripInput.dates;
+      return (mutate({
+        variables: {
+          input: newTripInput,
+        },
         refetchQueries: [{ query: FetchTrips, variables: { WandererId: input.WandererId } }],
-      })
-    ),
+      }));
+    },
   }),
 });

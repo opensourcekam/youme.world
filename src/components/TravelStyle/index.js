@@ -11,10 +11,6 @@ const TravelStyleText = styled.h4`
 const travelStyles = [
   {
     image: '',
-    name: '4-Wheels',
-  },
-  {
-    image: '',
     name: 'Duffel Bag',
   },
   {

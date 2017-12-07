@@ -3223,9 +3223,9 @@ fbjs@^0.8.1, fbjs@^0.8.16, fbjs@^0.8.3, fbjs@^0.8.4, fbjs@^0.8.5, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
-feuxworks@1.0.39:
-  version "1.0.39"
-  resolved "https://registry.yarnpkg.com/feuxworks/-/feuxworks-1.0.39.tgz#4e73f4683b36f8167a95914d58555d333c1fb412"
+feuxworks@1.0.42:
+  version "1.0.42"
+  resolved "https://registry.yarnpkg.com/feuxworks/-/feuxworks-1.0.42.tgz#937512ddf9fc090e3ad82542b5ba4098f3c47cf2"
   dependencies:
     "@storybook/addon-backgrounds" "^3.0.0"
     babel-preset-env "^1.6.1"

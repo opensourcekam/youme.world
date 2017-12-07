@@ -77,7 +77,7 @@ export default compose(
   withHandlers({
     onSubmit: ({
       createTrip, WandererId,
-    }) => values => console.log(values) || createTrip({
+    }) => values => createTrip({
       ...values,
       WandererId,
     }),

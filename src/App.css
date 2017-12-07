@@ -1,0 +1,18 @@
+.DateRangePicker_picker__fullScreenPortal {
+	background-color: #fff;
+	margin-top: 4.5rem;
+}
+.CalendarDay__highlighted_calendar {
+  background: rgb(54, 238, 131);
+  color: #186A3B;
+}
+
+.CalendarDay__highlighted_calendar:hover {
+  background: rgba(16, 255, 7, 0.972);
+  color: #186A3B;
+}
+
+.CalendarDay__highlighted_calendar:active {
+  background: rgba(16, 255, 7, 0.972);
+  color: #186A3B;
+}

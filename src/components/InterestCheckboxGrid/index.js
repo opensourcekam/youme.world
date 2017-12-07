@@ -6,9 +6,8 @@ import InterestCheckbox from '../InterestCheckbox';
 
 // TODO: GET THIS GRID RIGHT
 const Wrapper = styled(Flex).attrs({
-  align: 'center',
-  column: true,
 })`
+	flex-wrap: wrap;
 `;
 
 const InterestCheckboxGrid = ({ data }) => (
