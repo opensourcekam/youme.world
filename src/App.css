@@ -1,6 +1,6 @@
 .DateRangePicker_picker__fullScreenPortal {
 	background-color: #fff;
-	margin-top: 4.5rem;
+	z-index: 11;
 }
 .CalendarDay__highlighted_calendar {
   background: rgb(54, 238, 131);
