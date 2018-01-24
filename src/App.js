@@ -43,11 +43,11 @@ const App = () => (
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/signout" component={SignOut} />
 
-            <Route exact path="/wanderer/welcome" component={checkAuth(FirstTimeForm)} />
+            {/* <Route exact path="/wanderer/welcome" component={checkAuth(FirstTimeForm)} /> */}
             <Route exact path="/wanderer/dash" component={checkAuth(WandererDash)} />
-            <Route exact path="/wanderer/new/trip" component={checkAuth(NewTripForm)} />
-            <Route exact path="/wanderer/inspiration" component={checkAuth(WandererInspiration)} />
-            <Route exact path="/wanderer/trip/:tripId" component={checkAuth(TripDash)} />
+            {/* <Route exact path="/wanderer/new/trip" component={checkAuth(NewTripForm)} /> */}
+            {/* <Route exact path="/wanderer/inspiration" component={checkAuth(WandererInspiration)} /> */}
+            {/* <Route exact path="/wanderer/trip/:tripId" component={checkAuth(TripDash)} /> */}
 
 
             <Route exact component={Notfound} />

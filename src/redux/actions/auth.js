@@ -2,8 +2,7 @@ import axios from 'axios';
 import { push } from 'react-router-redux';
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, SAVE_TOKEN } from '../types';
 
-const ROOT_URL = '//youme-data-youme.b9ad.pro-us-east-1.openshiftapps.com';
-// const ROOT_URL = '//localhost:8080';
+const ROOT_URL = 'https://youme-api.kam.youme.world';
 
 const authUser = WanderId => ({
   type: AUTH_USER,

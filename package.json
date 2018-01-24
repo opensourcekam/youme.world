@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "express": "^4.16.2",
     "feuxworks": "1.0.31",
     "graphql": "^0.11.7",

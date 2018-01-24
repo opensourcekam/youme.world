@@ -1,9 +1,8 @@
 // import axios from 'axios';
 import { push } from 'react-router-redux';
-import { get } from 'lodash';
 import { CREATE_TRIP } from '../types';
 
-const ROOT_URL = '//youme-data-youme.b9ad.pro-us-east-1.openshiftapps.com';
+const ROOT_URL = 'https://youme-api.kam.youme.world';
 
 const createTrip = data => ({
   type: CREATE_TRIP,
