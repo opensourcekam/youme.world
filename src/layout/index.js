@@ -37,7 +37,7 @@ const Layout = ({ children, auth, ...props }) => {
       </ContentContainer>
       <Footer
         aboutLinks={footerAboutLinks}
-        footerColor="linear-gradient(to left, #b2fefa, #0ed2f7)"
+        footerColor="#3A3A3A"
         appName="youme.world"
       />
     </Foundation>

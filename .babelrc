@@ -1,18 +1,9 @@
 {
 	"presets": [
-			[
-					"env",
-					{
-							"targets": {
-									"browsers": [
-											"last 2 versions"
-									]
-							}
-					}
-			],
-			"react",
-			"es2015",
-			"stage-0",
-			"es2017"
+	  ["env", {
+		"targets": {
+		  "browsers": ["last 2 versions", "safari >= 7"]
+		}
+	  }]
 	]
-}
+  }

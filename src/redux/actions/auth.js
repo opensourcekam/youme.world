@@ -4,9 +4,9 @@ import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, SAVE_TOKEN } from '../types';
 
 const ROOT_URL = 'https://youme-api.kam.youme.world';
 
-const authUser = WanderId => ({
+const authUser = payload => ({
   type: AUTH_USER,
-  payload: WanderId,
+  payload,
 });
 
 const unauthUser = () => ({
@@ -44,25 +44,10 @@ export const signup = ({ email, password, ...rest }) => (dispatch) => {
     });
 };
 
-export const signin = ({ email, password, ...rest }) => (dispatch) => {
-  axios.post(`${ROOT_URL}/signin`, {
-    email,
-    password,
-    ...rest,
-  })
-    .then((response) => {
-      if (response.statusText === 'OK') {
-        const { token, id } = response.data;
-        if (token) {
-          dispatch(authUser(id));
-          dispatch(saveToken(token));
-          dispatch(push('/wanderer/dash'));
-        }
-      }
-    })
-    .catch((error) => {
-      dispatch(authError({ error, text: 'password incorrect' }));
-    });
+export const signin = ({ token }) => (dispatch) => {
+  dispatch(authUser(token));
+  dispatch(saveToken(token));
+  dispatch(push('/wanderer/dash'));
 };
 
 export const signout = () => (dispatch) => {

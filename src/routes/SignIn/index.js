@@ -1,19 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { graphql } from 'react-apollo';
 import { SigninForm } from 'feuxworks';
 import { Fade } from 'react-reveal';
 import styled from 'styled-components';
-import { compose } from 'recompose';
+import { compose, withProps } from 'recompose';
 import mapImg from '../../images/planningOnMap.jpg';
 import { signin } from '../../redux/actions/auth';
+import mutation from './gql';
 
-const enhance = compose(connect(state => ({
-  errorText: state.auth.error.text || '',
-}), dispatch => ({
-  doTheSignin: ({ email, password, ...rest }) =>
-    dispatch(signin({ email, password, rest })),
-})));
+const enhance = compose(
+  graphql(mutation),
+  connect(state => ({
+    errorText: state.auth.error.text,
+  }), dispatch => ({
+    storeAuth: data => dispatch(signin(data)),
+  })),
+  withProps(({ mutate, storeAuth }) => ({
+    getJwt: ({ email, password }) => {
+      mutate({
+        variables: {
+          input: {
+            password,
+            email,
+          },
+        },
+      }).then(({ data }) => {
+        // set page loading
+        console.log('got data', data);
+        // call redux
+        storeAuth(data);
+      }).catch((error, ...rest) => {
+		  // set errors
+        console.log('there was an error sending the query', error, rest);
+      });
+    },
+  })),
+);
 
 const Container = styled.main`
 	display: flex;
@@ -41,11 +65,14 @@ const Error = styled.span`
 	color: red;
 `;
 
-const SignIn = ({ doTheSignin, errorText }) => (
+const SignIn = ({
+  errorText, getJwt, ...rest
+}) => console.log('...rest', rest) || (
   <Container>
     <Fade up delay={800}>
       <Wrapper>
-        <SigninForm onSubmit={values => doTheSignin(values)} />
+        <SigninForm onSubmit={values => getJwt(values)} />
+        {/* {getJwtLoading && <span>LOADING...</span>} */}
         <Error>{errorText}</Error>
       </Wrapper>
     </Fade>
@@ -53,8 +80,9 @@ const SignIn = ({ doTheSignin, errorText }) => (
 );
 
 SignIn.propTypes = {
-  doTheSignin: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
   errorText: PropTypes.string,
+  mutateLoading: PropTypes.bool.isRequired,
 };
 
 SignIn.defaultProps = {

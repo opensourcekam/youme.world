@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   HomeLead,
-  Card,
 } from 'feuxworks';
 import styled from 'styled-components';
 import { Flex } from 'grid-styled';
@@ -13,18 +12,15 @@ const H2 = styled.h2`
 	 color: #3D3E40;
 `;
 
-const ContentWrap = styled(Card)`
-`;
-
 const ImageCta = styled.img`
 	border-radius: 50%;
 	margin: 0 0 2em 0;
 `;
 
 const Centered = styled(Flex).attrs({
-	justify: "center",
-	align: "center",
-	column: true
+  justify: 'center',
+  align: 'center',
+  column: true,
 })`
 	text-align: center;
 `;
@@ -38,16 +34,16 @@ const Home = () =>
     <main>
       <HomeLead
         banner="#123093 url(https://images.unsplash.com/photo-1488628278511-2177a435414d?dpr=1&auto=compress,format&fit=crop&w=2851&h=&q=80&cs=tinysrgb&crop=)"
-        header="youme.plan"
+        header="youme.world"
         lead="Your friends. Your experiences. Your life."
         button={{
 				text: 'Have an adventure',
 				link: '/signup',
 			}}
       />
-			<Centered 
-			p={["3rem", "15rem"]}
-			>
+      <Centered
+        p={['3rem', '15rem']}
+      >
         <H2>How it works</H2>
         <Centered>
           <H3>This version of youme.world is designed to help you find things to do in your dream destinations!</H3>

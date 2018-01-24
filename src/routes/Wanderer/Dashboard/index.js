@@ -24,7 +24,7 @@ text-transform: lowercase;
 font-family: 'Pacifico', cursive;
 `;
 
-const WandererDash = ({ data }) => (
+const WandererDash = () => (
   <Flex>
     <SideBar>
       <ProfileImage src={SelfIMG} alt="profile" />
@@ -44,23 +44,13 @@ const WandererDash = ({ data }) => (
         </Box>
         <Box />
       </Flex>
-      <Box w={[1, 1, 1, 2 / 3]}>
+      {/* <Box w={[1, 1, 1, 2 / 3]}>
         <InfoText className="h2 bold">Upcoming trips</InfoText>
-        <TripCard data={{
-					to: '#smoney',
-					locationName: 'Lyon, France',
-					backgroundImg: TEMPIMG,
-					cheapestFlight: '437',
-					currencySymbol: '$',
-				}}
-        />
+
       </Box>
       <Box w={[1, 1, 1, 1 / 3]} pl={['0', '0', '0', '1rem']}>
         <InfoText className="h2 bold">Dream Trips</InfoText>
-        <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} />
-        {/* <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} /> */}
-        {/* <TripCard data={{ to: '#', backgroundImg: TEMPIMG }} /> */}
-      </Box>
+      </Box> */}
     </Flex>
   </Flex>
 );
